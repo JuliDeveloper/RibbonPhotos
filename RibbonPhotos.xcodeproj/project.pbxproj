@@ -45,6 +45,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		250F3270292E54DB00345F2B /* Presentations */ = {
+			isa = PBXGroup;
+			children = (
+				25E26BC5292CFE3900816889 /* Main.storyboard */,
+				25E26BD5292D288300816889 /* ImagesList */,
+			);
+			path = Presentations;
+			sourceTree = "<group>";
+		};
+		250F3271292E54FB00345F2B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				25E26BE4292D45FC00816889 /* UIColor+Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		250F3272292E550A00345F2B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				25E26BCD292CFE3A00816889 /* Info.plist */,
+				25E26BCA292CFE3A00816889 /* LaunchScreen.storyboard */,
+				25E26BE8292D55A400816889 /* Fonts */,
+				25E26BC8292CFE3A00816889 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		250F3273292E553100345F2B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				25E26BBF292CFE3900816889 /* AppDelegate.swift */,
+				25E26BC1292CFE3900816889 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		25E26BB3292CFE3900816889 = {
 			isa = PBXGroup;
 			children = (
@@ -64,15 +101,10 @@
 		25E26BBE292CFE3900816889 /* RibbonPhotos */ = {
 			isa = PBXGroup;
 			children = (
-				25E26BD5292D288300816889 /* ImagesList */,
-				25E26BBF292CFE3900816889 /* AppDelegate.swift */,
-				25E26BC1292CFE3900816889 /* SceneDelegate.swift */,
-				25E26BE4292D45FC00816889 /* UIColor+Extensions.swift */,
-				25E26BC5292CFE3900816889 /* Main.storyboard */,
-				25E26BC8292CFE3A00816889 /* Assets.xcassets */,
-				25E26BE8292D55A400816889 /* Fonts */,
-				25E26BCA292CFE3A00816889 /* LaunchScreen.storyboard */,
-				25E26BCD292CFE3A00816889 /* Info.plist */,
+				250F3273292E553100345F2B /* App */,
+				250F3270292E54DB00345F2B /* Presentations */,
+				250F3271292E54FB00345F2B /* Helpers */,
+				250F3272292E550A00345F2B /* Resources */,
 			);
 			path = RibbonPhotos;
 			sourceTree = "<group>";
@@ -320,7 +352,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DWMGJ928Y5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RibbonPhotos/Info.plist;
+				INFOPLIST_FILE = RibbonPhotos/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -350,7 +382,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DWMGJ928Y5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RibbonPhotos/Info.plist;
+				INFOPLIST_FILE = RibbonPhotos/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
