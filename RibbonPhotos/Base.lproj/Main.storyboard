@@ -1,30 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="YS Display-Medium.ttf">
+            <string>YSDisplay-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Images List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ImagesListViewController" customModule="RibbonPhotos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Mjt-Jh-Amb">
-                                <rect key="frame" x="0.0" y="60" width="390" height="784"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="60" width="414" height="836"/>
+                                <color key="backgroundColor" name="black"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImagesListCell" rowHeight="156" id="A3h-GF-IR2" customClass="ImagesListCell" customModule="RibbonPhotos" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="156"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A3h-GF-IR2" id="Z7I-Nk-olx">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="156"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="DfZ-TJ-Niw">
+                                                    <rect key="frame" x="16" y="0.0" width="382" height="156"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1GH-I8-hBa">
+                                                    <rect key="frame" x="358" y="12" width="30" height="26"/>
+                                                    <color key="tintColor" red="0.96078431369999995" green="0.41960784309999999" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="Active">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                </button>
+                                                <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvz-JD-dAT" userLabel="gradient">
+                                                    <rect key="frame" x="0.0" y="126" width="414" height="30"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2022" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LB-Eo-MLV">
+                                                            <rect key="frame" x="8" y="6.6666666666666581" width="92.333333333333329" height="15.333333333333336"/>
+                                                            <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="13"/>
+                                                            <color key="textColor" name="white"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4LB-Eo-MLV" secondAttribute="trailing" constant="20" symbolic="YES" id="Vwc-GC-nfD"/>
+                                                        <constraint firstAttribute="bottom" secondItem="4LB-Eo-MLV" secondAttribute="bottom" constant="8" id="aDa-vo-tM0"/>
+                                                        <constraint firstItem="4LB-Eo-MLV" firstAttribute="leading" secondItem="qvz-JD-dAT" secondAttribute="leading" constant="8" id="hLJ-h2-usN"/>
+                                                        <constraint firstAttribute="height" constant="30" id="mTh-Yt-0cX"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" name="black"/>
+                                            <constraints>
+                                                <constraint firstItem="DfZ-TJ-Niw" firstAttribute="trailing" secondItem="1GH-I8-hBa" secondAttribute="trailing" constant="10" id="FVS-MO-3ed"/>
+                                                <constraint firstAttribute="bottom" secondItem="DfZ-TJ-Niw" secondAttribute="bottom" id="Fhj-5c-0d5"/>
+                                                <constraint firstItem="DfZ-TJ-Niw" firstAttribute="trailing" secondItem="qvz-JD-dAT" secondAttribute="trailing" id="ebm-iO-vTr"/>
+                                                <constraint firstAttribute="trailing" secondItem="DfZ-TJ-Niw" secondAttribute="trailing" constant="16" id="jub-wi-fZ1"/>
+                                                <constraint firstItem="DfZ-TJ-Niw" firstAttribute="leading" secondItem="Z7I-Nk-olx" secondAttribute="leading" constant="16" id="ne1-cz-GS0"/>
+                                                <constraint firstItem="1GH-I8-hBa" firstAttribute="top" secondItem="DfZ-TJ-Niw" secondAttribute="top" constant="12" id="rwd-Vp-OXt"/>
+                                                <constraint firstItem="qvz-JD-dAT" firstAttribute="leading" secondItem="DfZ-TJ-Niw" secondAttribute="leading" id="s4D-hb-GaJ"/>
+                                                <constraint firstItem="DfZ-TJ-Niw" firstAttribute="top" secondItem="Z7I-Nk-olx" secondAttribute="top" id="tKj-pj-msb"/>
+                                                <constraint firstItem="qvz-JD-dAT" firstAttribute="bottom" secondItem="DfZ-TJ-Niw" secondAttribute="bottom" id="vlz-zB-rFh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="black"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="4LB-Eo-MLV" id="Gno-vF-YP3"/>
+                                            <outlet property="gradientView" destination="qvz-JD-dAT" id="w1L-xj-U0r"/>
+                                            <outlet property="imageCell" destination="DfZ-TJ-Niw" id="p21-rY-uFr"/>
+                                            <outlet property="likeButton" destination="1GH-I8-hBa" id="9Jg-7M-d2O"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.1019607843" green="0.1058823529" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="black"/>
                         <constraints>
                             <constraint firstItem="Mjt-Jh-Amb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="60" id="3Le-w6-K5O"/>
+                            <constraint firstAttribute="bottom" secondItem="Mjt-Jh-Amb" secondAttribute="bottom" id="3eZ-ek-MaC"/>
                             <constraint firstAttribute="bottom" secondItem="Mjt-Jh-Amb" secondAttribute="bottom" id="Fvp-Ds-N64"/>
                             <constraint firstItem="Mjt-Jh-Amb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MVT-Eh-fff"/>
                             <constraint firstAttribute="trailing" secondItem="Mjt-Jh-Amb" secondAttribute="trailing" id="T2W-dk-itE"/>
@@ -36,7 +108,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-317" y="-96"/>
+            <point key="canvasLocation" x="-318.46153846153845" y="-96.682464454976298"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="0" width="200" height="132"/>
+        <image name="Active" width="30" height="26"/>
+        <namedColor name="black">
+            <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
