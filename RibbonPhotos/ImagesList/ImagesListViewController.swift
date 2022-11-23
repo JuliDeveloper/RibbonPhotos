@@ -12,9 +12,19 @@ final class ImagesListViewController: UIViewController {
     //MARK: - Properties
     @IBOutlet private var tableView: UITableView!
     
+    private var photosName = [String]()
+    private lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        return formatter
+    }()
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        photosName = Array(0..<20).map({ "\($0)" })
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -26,7 +36,7 @@ final class ImagesListViewController: UIViewController {
 //MARK: - UITableViewDataSource
 extension ImagesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        photosName.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -34,7 +44,7 @@ extension ImagesListViewController: UITableViewDataSource {
         
         guard let imageListCell = cell as? ImagesListCell else { return UITableViewCell() }
         
-        imageListCell.configCell(for: imageListCell)
+        configCell(for: imageListCell, with: indexPath)
         
         return imageListCell
     }
@@ -44,5 +54,21 @@ extension ImagesListViewController: UITableViewDataSource {
 extension ImagesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+}
+
+extension ImagesListViewController {
+    func configCell(for cell: ImagesListCell, with indexPath: IndexPath) {
+        cell.createGradient(for: cell.gradientView)
+        guard let image = UIImage(named: photosName[indexPath.row]) else {
+            return
+        }
+
+        cell.imageCell.image = image
+        cell.dateLabel.text = dateFormatter.string(from: Date())
+
+        let isLiked = indexPath.row % 2 == 0
+        let likeImage = isLiked ? UIImage(named: "buttonNoActive") : UIImage(named: "buttonActive")
+        cell.likeButton.setImage(likeImage, for: .normal)
     }
 }

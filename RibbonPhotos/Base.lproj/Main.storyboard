@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -34,7 +34,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="DfZ-TJ-Niw">
-                                                    <rect key="frame" x="16" y="0.0" width="382" height="156"/>
+                                                    <rect key="frame" x="16" y="0.0" width="382" height="148"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="16"/>
@@ -51,10 +51,10 @@
                                                     </state>
                                                 </button>
                                                 <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvz-JD-dAT" userLabel="gradient">
-                                                    <rect key="frame" x="0.0" y="126" width="414" height="30"/>
+                                                    <rect key="frame" x="16" y="118" width="382" height="30"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2022" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LB-Eo-MLV">
-                                                            <rect key="frame" x="8" y="6.6666666666666581" width="92.333333333333329" height="15.333333333333336"/>
+                                                            <rect key="frame" x="8" y="6.5" width="97" height="15.5"/>
                                                             <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="13"/>
                                                             <color key="textColor" name="white"/>
                                                             <nil key="highlightedColor"/>
@@ -71,10 +71,10 @@
                                             <color key="backgroundColor" name="black"/>
                                             <constraints>
                                                 <constraint firstItem="DfZ-TJ-Niw" firstAttribute="trailing" secondItem="1GH-I8-hBa" secondAttribute="trailing" constant="10" id="FVS-MO-3ed"/>
-                                                <constraint firstAttribute="bottom" secondItem="DfZ-TJ-Niw" secondAttribute="bottom" id="Fhj-5c-0d5"/>
                                                 <constraint firstItem="DfZ-TJ-Niw" firstAttribute="trailing" secondItem="qvz-JD-dAT" secondAttribute="trailing" id="ebm-iO-vTr"/>
                                                 <constraint firstAttribute="trailing" secondItem="DfZ-TJ-Niw" secondAttribute="trailing" constant="16" id="jub-wi-fZ1"/>
                                                 <constraint firstItem="DfZ-TJ-Niw" firstAttribute="leading" secondItem="Z7I-Nk-olx" secondAttribute="leading" constant="16" id="ne1-cz-GS0"/>
+                                                <constraint firstAttribute="bottom" secondItem="DfZ-TJ-Niw" secondAttribute="bottom" constant="8" id="rIP-7Z-1ic"/>
                                                 <constraint firstItem="1GH-I8-hBa" firstAttribute="top" secondItem="DfZ-TJ-Niw" secondAttribute="top" constant="12" id="rwd-Vp-OXt"/>
                                                 <constraint firstItem="qvz-JD-dAT" firstAttribute="leading" secondItem="DfZ-TJ-Niw" secondAttribute="leading" id="s4D-hb-GaJ"/>
                                                 <constraint firstItem="DfZ-TJ-Niw" firstAttribute="top" secondItem="Z7I-Nk-olx" secondAttribute="top" id="tKj-pj-msb"/>
