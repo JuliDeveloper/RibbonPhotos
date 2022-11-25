@@ -13,12 +13,6 @@ final class ImagesListViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
     
     private var photosName = [String]()
-    private lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        formatter.timeStyle = .none
-        return formatter
-    }()
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -41,7 +35,7 @@ extension ImagesListViewController: UITableViewDataSource {
         
         guard let imageListCell = cell as? ImagesListCell else { return UITableViewCell() }
         
-        configCell(for: imageListCell, with: indexPath)
+        imageListCell.configCell(for: imageListCell, from: photosName, with: indexPath)
         
         return imageListCell
     }
@@ -51,30 +45,5 @@ extension ImagesListViewController: UITableViewDataSource {
 extension ImagesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-    }
-}
-
-//MARK: - Helpers
-extension ImagesListViewController {
-    func configCell(for cell: ImagesListCell, with indexPath: IndexPath) {
-        createGradient(for: cell.gradientView)
-        guard let image = UIImage(named: photosName[indexPath.row]) else {
-            return
-        }
-
-        cell.imageCell.image = image
-        cell.dateLabel.text = dateFormatter.string(from: Date())
-
-        let isLiked = indexPath.row % 2 == 0
-        let likeImage = isLiked ? UIImage(named: "buttonNoActive") : UIImage(named: "buttonActive")
-        cell.likeButton.setImage(likeImage, for: .normal)
-    }
-    
-    func createGradient(for view: UIView) {
-        let gradient = CAGradientLayer()
-        gradient.frame = view.bounds
-        gradient.colors = [UIColor.ypBlack.withAlphaComponent(0).cgColor,
-                           UIColor.ypBlack.withAlphaComponent(0.2).cgColor]
-        view.layer.insertSublayer(gradient, at: 0)
     }
 }

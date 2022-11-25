@@ -51,7 +51,7 @@
                                                     </state>
                                                 </button>
                                                 <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvz-JD-dAT" userLabel="gradient">
-                                                    <rect key="frame" x="16" y="118" width="382" height="30"/>
+                                                    <rect key="frame" x="0.0" y="118" width="414" height="30"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2022" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LB-Eo-MLV">
                                                             <rect key="frame" x="8" y="6.5" width="97" height="15.5"/>
