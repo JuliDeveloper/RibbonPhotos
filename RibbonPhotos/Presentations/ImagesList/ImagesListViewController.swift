@@ -12,6 +12,7 @@ final class ImagesListViewController: UIViewController {
     //MARK: - Properties
     @IBOutlet private var tableView: UITableView!
     
+    private let showSingleImageSegueIdentifier = "ShowSingleImage"
     private var photosName = [String]()
     
     //MARK: - LifeCycle
@@ -21,6 +22,17 @@ final class ImagesListViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == showSingleImageSegueIdentifier {
+            let vc = segue.destination as? SingleImageViewController
+            let indexPath = sender as! IndexPath
+            let image = UIImage(named: photosName[indexPath.row])
+            vc?.image = image
+        } else {
+            super.prepare(for: segue, sender: sender)
+        }
     }
 }
 
@@ -44,6 +56,6 @@ extension ImagesListViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension ImagesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        performSegue(withIdentifier: showSingleImageSegueIdentifier, sender: indexPath)
     }
 }
