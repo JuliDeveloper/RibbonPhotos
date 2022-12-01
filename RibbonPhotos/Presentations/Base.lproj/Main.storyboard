@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wjA-BA-KNz">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="YS Display-Bold.ttf">
+            <string>YSDisplay-Bold</string>
+        </array>
         <array key="YS Display-Medium.ttf">
             <string>YSDisplay-Medium</string>
         </array>
@@ -51,10 +54,10 @@
                                                     </state>
                                                 </button>
                                                 <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvz-JD-dAT" userLabel="gradient">
-                                                    <rect key="frame" x="0.0" y="118" width="414" height="30"/>
+                                                    <rect key="frame" x="16" y="118" width="382" height="30"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2022" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LB-Eo-MLV">
-                                                            <rect key="frame" x="8" y="6.5" width="97" height="15.5"/>
+                                                            <rect key="frame" x="8" y="6.5" width="92.5" height="15.5"/>
                                                             <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="13"/>
                                                             <color key="textColor" name="white"/>
                                                             <nil key="highlightedColor"/>
@@ -110,12 +113,78 @@
             </objects>
             <point key="canvasLocation" x="-318.46153846153845" y="-96.682464454976298"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="xQX-Dn-IoY">
+            <objects>
+                <viewController id="wjA-BA-KNz" customClass="ProfileViewController" customModule="RibbonPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kSF-7d-FIb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="elK-5M-zRc">
+                                <rect key="frame" x="16" y="76" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Id5-Cw-REU"/>
+                                    <constraint firstAttribute="height" constant="70" id="gk9-C8-FqW"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kd0-WC-pFd">
+                                <rect key="frame" x="368" y="100" width="20" height="22"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="ipad.and.arrow.forward"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T1a-aI-8aq">
+                                <rect key="frame" x="16" y="154" width="382" height="74"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Екатерина Новикова" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94l-yQ-JFw">
+                                        <rect key="frame" x="0.0" y="0.0" width="224.5" height="27"/>
+                                        <fontDescription key="fontDescription" name="YSDisplay-Bold" family="YS Display" pointSize="23"/>
+                                        <color key="textColor" name="white"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ekaterina_nov" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vg-uA-5By">
+                                        <rect key="frame" x="0.0" y="35" width="92" height="15.5"/>
+                                        <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="13"/>
+                                        <color key="textColor" name="gray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, world!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R15-lI-JA6">
+                                        <rect key="frame" x="0.0" y="58.5" width="70.5" height="15.5"/>
+                                        <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="13"/>
+                                        <color key="textColor" name="white"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YNC-1p-9Gd"/>
+                        <color key="backgroundColor" name="black"/>
+                        <constraints>
+                            <constraint firstItem="elK-5M-zRc" firstAttribute="leading" secondItem="YNC-1p-9Gd" secondAttribute="leading" constant="16" id="PG1-eh-NY0"/>
+                            <constraint firstItem="YNC-1p-9Gd" firstAttribute="trailing" secondItem="Kd0-WC-pFd" secondAttribute="trailing" constant="26" id="WND-gF-IgO"/>
+                            <constraint firstItem="T1a-aI-8aq" firstAttribute="top" secondItem="elK-5M-zRc" secondAttribute="bottom" constant="8" id="Yjg-4J-LQ9"/>
+                            <constraint firstItem="Kd0-WC-pFd" firstAttribute="top" secondItem="kSF-7d-FIb" secondAttribute="top" constant="100" id="chL-id-AVP"/>
+                            <constraint firstItem="YNC-1p-9Gd" firstAttribute="trailing" secondItem="T1a-aI-8aq" secondAttribute="trailing" constant="16" id="iJz-X4-CFk"/>
+                            <constraint firstItem="T1a-aI-8aq" firstAttribute="leading" secondItem="YNC-1p-9Gd" secondAttribute="leading" constant="16" id="p9r-Ui-YFd"/>
+                            <constraint firstItem="elK-5M-zRc" firstAttribute="top" secondItem="kSF-7d-FIb" secondAttribute="top" constant="76" id="tfd-2D-VZG"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xm2-V8-7J8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-320.28985507246381" y="639.50892857142856"/>
+        </scene>
     </scenes>
     <resources>
         <image name="0" width="200" height="132"/>
         <image name="Active" width="30" height="26"/>
+        <image name="Photo" width="70" height="70"/>
+        <image name="ipad.and.arrow.forward" width="20" height="22"/>
         <namedColor name="black">
             <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray">
+            <color red="0.68199998140335083" green="0.68599998950958252" blue="0.70599997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
