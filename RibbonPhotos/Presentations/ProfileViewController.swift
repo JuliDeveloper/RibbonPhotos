@@ -7,17 +7,15 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
     
+    //MARK: - Properties
     @IBOutlet private weak var avatarImage: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var socialNetworkLabel: UILabel!
     @IBOutlet private weak var statusLabel: UILabel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+
+    //MARK: - @IBActions
     @IBAction private func logout(_ sender: UIButton) {
     }
 }
