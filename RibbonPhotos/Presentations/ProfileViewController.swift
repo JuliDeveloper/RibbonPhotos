@@ -9,8 +9,15 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    @IBOutlet private weak var avatarImage: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var socialNetworkLabel: UILabel!
+    @IBOutlet private weak var statusLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    @IBAction private func logout(_ sender: UIButton) {
+    }
 }

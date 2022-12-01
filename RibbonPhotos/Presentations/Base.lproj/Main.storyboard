@@ -153,6 +153,9 @@
                                 <rect key="frame" x="368" y="100" width="20" height="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="ipad.and.arrow.forward"/>
+                                <connections>
+                                    <action selector="logout:" destination="wjA-BA-KNz" eventType="touchUpInside" id="FUi-Q8-tmr"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T1a-aI-8aq">
                                 <rect key="frame" x="16" y="154" width="382" height="74"/>
@@ -191,6 +194,12 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="tab_profile_active" id="RXE-Gi-Dwe"/>
+                    <connections>
+                        <outlet property="avatarImage" destination="elK-5M-zRc" id="CoJ-ms-9ns"/>
+                        <outlet property="nameLabel" destination="94l-yQ-JFw" id="f4m-2q-b2p"/>
+                        <outlet property="socialNetworkLabel" destination="6vg-uA-5By" id="bPC-Ay-LXC"/>
+                        <outlet property="statusLabel" destination="R15-lI-JA6" id="y1D-Eo-t2S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xm2-V8-7J8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
