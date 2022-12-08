@@ -130,16 +130,26 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="6c1-id-1r0">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arR-oX-HR8">
+                                        <rect key="frame" x="181.5" y="795" width="51" height="51"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="sharing_button"/>
+                                        <connections>
+                                            <action selector="didTapShareButton:" destination="RXE-fS-flQ" eventType="touchUpInside" id="TYC-dQ-5Iq"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="6c1-id-1r0" firstAttribute="leading" secondItem="mB4-6s-rkZ" secondAttribute="leading" id="0bt-vx-Wfa"/>
                                     <constraint firstItem="6c1-id-1r0" firstAttribute="leading" secondItem="s7i-TH-zfa" secondAttribute="leading" id="9JV-cS-T0b"/>
+                                    <constraint firstItem="arR-oX-HR8" firstAttribute="centerX" secondItem="s7i-TH-zfa" secondAttribute="centerX" id="P01-zt-jNt"/>
                                     <constraint firstItem="mB4-6s-rkZ" firstAttribute="bottom" secondItem="6c1-id-1r0" secondAttribute="bottom" id="X2k-7n-Dcz"/>
                                     <constraint firstItem="6c1-id-1r0" firstAttribute="top" secondItem="s7i-TH-zfa" secondAttribute="top" id="XHt-YR-XHi"/>
                                     <constraint firstAttribute="bottom" secondItem="6c1-id-1r0" secondAttribute="bottom" id="XZb-1o-DW6"/>
                                     <constraint firstItem="6c1-id-1r0" firstAttribute="top" secondItem="mB4-6s-rkZ" secondAttribute="top" id="jsq-SH-O3I"/>
                                     <constraint firstAttribute="trailing" secondItem="6c1-id-1r0" secondAttribute="trailing" id="qJM-2s-zud"/>
                                     <constraint firstItem="6c1-id-1r0" firstAttribute="trailing" secondItem="mB4-6s-rkZ" secondAttribute="trailing" id="rPC-BQ-A2h"/>
+                                    <constraint firstAttribute="bottom" secondItem="arR-oX-HR8" secondAttribute="bottom" constant="50" id="ugu-kq-g9x"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="cuO-tc-QmI"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="mB4-6s-rkZ"/>
@@ -275,6 +285,7 @@
         <image name="chevron.backward" width="9" height="16"/>
         <image name="ipad.and.arrow.forward" width="20" height="22"/>
         <image name="photo" width="70" height="70"/>
+        <image name="sharing_button" width="51" height="51"/>
         <image name="tab_editorial_active" width="20" height="22"/>
         <image name="tab_profile_active" width="24" height="24"/>
         <namedColor name="black">
