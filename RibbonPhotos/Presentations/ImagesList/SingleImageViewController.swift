@@ -40,6 +40,7 @@ final class SingleImageViewController: UIViewController {
     
     @IBAction private func didTapShareButton(_ sender: UIButton) {
         let activityVC = UIActivityViewController(activityItems: [image ?? UIImage()], applicationActivities: nil)
+        activityVC.overrideUserInterfaceStyle = .dark
         present(activityVC, animated: true)
     }
     
