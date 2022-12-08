@@ -57,7 +57,7 @@
                                                     <rect key="frame" x="16" y="118" width="382" height="30"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2022" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LB-Eo-MLV">
-                                                            <rect key="frame" x="8" y="6.5" width="97" height="15.5"/>
+                                                            <rect key="frame" x="8" y="6.5" width="92.5" height="15.5"/>
                                                             <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="13"/>
                                                             <color key="textColor" name="white"/>
                                                             <nil key="highlightedColor"/>
@@ -124,9 +124,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="6c1-id-1r0">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7i-TH-zfa">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="6c1-id-1r0">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="6c1-id-1r0" firstAttribute="leading" secondItem="mB4-6s-rkZ" secondAttribute="leading" id="0bt-vx-Wfa"/>
+                                    <constraint firstItem="6c1-id-1r0" firstAttribute="leading" secondItem="s7i-TH-zfa" secondAttribute="leading" id="9JV-cS-T0b"/>
+                                    <constraint firstItem="mB4-6s-rkZ" firstAttribute="bottom" secondItem="6c1-id-1r0" secondAttribute="bottom" id="X2k-7n-Dcz"/>
+                                    <constraint firstItem="6c1-id-1r0" firstAttribute="top" secondItem="s7i-TH-zfa" secondAttribute="top" id="XHt-YR-XHi"/>
+                                    <constraint firstAttribute="bottom" secondItem="6c1-id-1r0" secondAttribute="bottom" id="XZb-1o-DW6"/>
+                                    <constraint firstItem="6c1-id-1r0" firstAttribute="top" secondItem="mB4-6s-rkZ" secondAttribute="top" id="jsq-SH-O3I"/>
+                                    <constraint firstAttribute="trailing" secondItem="6c1-id-1r0" secondAttribute="trailing" id="qJM-2s-zud"/>
+                                    <constraint firstItem="6c1-id-1r0" firstAttribute="trailing" secondItem="mB4-6s-rkZ" secondAttribute="trailing" id="rPC-BQ-A2h"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="cuO-tc-QmI"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="mB4-6s-rkZ"/>
+                                <connections>
+                                    <outlet property="delegate" destination="RXE-fS-flQ" id="aj8-s8-WJO"/>
+                                </connections>
+                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Js-f8-T6m">
                                 <rect key="frame" x="16" y="59" width="9" height="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -140,21 +160,22 @@
                         <color key="backgroundColor" name="black"/>
                         <constraints>
                             <constraint firstItem="1Js-f8-T6m" firstAttribute="top" secondItem="fsF-Ox-FP1" secondAttribute="top" constant="59" id="9Bv-D4-AAA"/>
-                            <constraint firstAttribute="bottom" secondItem="6c1-id-1r0" secondAttribute="bottom" id="QDp-gw-Fl4"/>
-                            <constraint firstItem="6c1-id-1r0" firstAttribute="leading" secondItem="fsF-Ox-FP1" secondAttribute="leading" id="Wd8-LR-O1p"/>
-                            <constraint firstAttribute="trailing" secondItem="6c1-id-1r0" secondAttribute="trailing" id="h2L-rL-L5p"/>
-                            <constraint firstItem="6c1-id-1r0" firstAttribute="top" secondItem="fsF-Ox-FP1" secondAttribute="top" id="mfJ-mq-dib"/>
+                            <constraint firstAttribute="bottom" secondItem="s7i-TH-zfa" secondAttribute="bottom" id="RAh-lD-ugY"/>
+                            <constraint firstItem="s7i-TH-zfa" firstAttribute="top" secondItem="fsF-Ox-FP1" secondAttribute="top" id="XBD-cB-TVs"/>
+                            <constraint firstItem="wZl-rx-8vE" firstAttribute="trailing" secondItem="s7i-TH-zfa" secondAttribute="trailing" id="Ypd-I3-HnJ"/>
+                            <constraint firstItem="s7i-TH-zfa" firstAttribute="leading" secondItem="wZl-rx-8vE" secondAttribute="leading" id="i0k-9U-ktx"/>
                             <constraint firstItem="1Js-f8-T6m" firstAttribute="leading" secondItem="wZl-rx-8vE" secondAttribute="leading" constant="16" id="zGX-kg-rkF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5h6-KZ-wYe"/>
                     <connections>
                         <outlet property="imageView" destination="6c1-id-1r0" id="AJ8-Lq-dm1"/>
+                        <outlet property="scrollView" destination="s7i-TH-zfa" id="ZyS-II-xly"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qle-Sf-mTo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="567" y="-97"/>
+            <point key="canvasLocation" x="566.66666666666674" y="-97.098214285714278"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1ai-T4-JBv">
@@ -203,19 +224,19 @@
                                 <rect key="frame" x="16" y="154" width="382" height="74"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Екатерина Новикова" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94l-yQ-JFw">
-                                        <rect key="frame" x="0.0" y="0.0" width="224.5" height="27"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="225.5" height="27"/>
                                         <fontDescription key="fontDescription" name="YSDisplay-Bold" family="YS Display" pointSize="23"/>
                                         <color key="textColor" name="white"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ekaterina_nov" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vg-uA-5By">
-                                        <rect key="frame" x="0.0" y="35" width="92" height="15.5"/>
+                                        <rect key="frame" x="0.0" y="35" width="91.5" height="15.5"/>
                                         <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="13"/>
                                         <color key="textColor" name="gray"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, world!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R15-lI-JA6">
-                                        <rect key="frame" x="0.0" y="58.5" width="70.5" height="15.5"/>
+                                        <rect key="frame" x="0.0" y="58.5" width="72.5" height="15.5"/>
                                         <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="13"/>
                                         <color key="textColor" name="white"/>
                                         <nil key="highlightedColor"/>
