@@ -18,26 +18,29 @@ final class ProfileViewController: UIViewController {
     }()
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Екатерина Новикова"
-        label.font = UIFont(name: "YS Display", size: 23)
-        label.textColor = .ypWhite
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.config(
+            for: label,
+            text: "Екатерина Новикова",
+            fontSize: 23,
+            textColor: .ypWhite)
         return label
     }()
     private lazy var usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "@ekaterina_nov"
-        label.font = UIFont(name: "YS Display", size: 13)
-        label.textColor = .ypGray
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.config(
+            for: label,
+            text: "@ekaterina_nov",
+            fontSize: 13,
+            textColor: .ypGray)
         return label
     }()
     private lazy var statusLabel: UILabel = {
         let label = UILabel()
-        label.text = "Hello, world!"
-        label.font = UIFont(name: "YS Display", size: 13)
-        label.textColor = .ypWhite
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.config(
+            for: label,
+            text: "Hello, world!",
+            fontSize: 13,
+            textColor: .ypWhite)
         return label
     }()
     private lazy var logoutButton: UIButton = {
@@ -88,7 +91,7 @@ final class ProfileViewController: UIViewController {
         ])
     }
 
-    @objc func didTapButton() {
+    @objc private func didTapButton() {
         
     }
 }
