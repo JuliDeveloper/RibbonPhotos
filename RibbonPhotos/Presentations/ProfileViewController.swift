@@ -57,6 +57,11 @@ final class ProfileViewController: UIViewController {
         setupConstraints()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+    }
+    
     //MARK: - Helpers
     private func addSubviews() {
         view.addSubview(profileImageView)
