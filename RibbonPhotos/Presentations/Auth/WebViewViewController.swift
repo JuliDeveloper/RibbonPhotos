@@ -8,5 +8,10 @@
 import WebKit
 
 final class WebViewViewController: UIViewController {
+    
+    @IBOutlet private var webView: WKWebView!
+    
     private let identifier = "ShowWebView"
+    
+    @IBAction private func didTapBackButton(_ sender: UIButton?) {}
 }
