@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l3U-RC-g62">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QWS-C4-zBe">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -220,9 +220,74 @@
             </objects>
             <point key="canvasLocation" x="-320.28985507246381" y="639.50892857142856"/>
         </scene>
+        <!--Auth View Controller-->
+        <scene sceneID="jpP-Ml-YpG">
+            <objects>
+                <viewController id="Uq3-qU-bof" customClass="AuthViewController" customModule="RibbonPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zfl-er-1DX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqE-i3-OAH">
+                                <rect key="frame" x="16" y="724" width="382" height="48"/>
+                                <color key="backgroundColor" name="white"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="ezl-fQ-ZJX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Войти">
+                                    <color key="titleColor" name="black"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="auth_screen_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ca9-vv-xPQ">
+                                <rect key="frame" x="177" y="418" width="60" height="60"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rid-dK-C2H"/>
+                        <color key="backgroundColor" name="black"/>
+                        <constraints>
+                            <constraint firstItem="Ca9-vv-xPQ" firstAttribute="centerY" secondItem="zfl-er-1DX" secondAttribute="centerY" id="4vg-Bh-15g"/>
+                            <constraint firstItem="rid-dK-C2H" firstAttribute="trailing" secondItem="ZqE-i3-OAH" secondAttribute="trailing" constant="16" id="KNQ-fq-bJU"/>
+                            <constraint firstAttribute="bottom" secondItem="ZqE-i3-OAH" secondAttribute="bottom" constant="124" id="hNe-IW-PN0"/>
+                            <constraint firstItem="Ca9-vv-xPQ" firstAttribute="centerX" secondItem="zfl-er-1DX" secondAttribute="centerX" id="pOf-99-hG5"/>
+                            <constraint firstItem="ZqE-i3-OAH" firstAttribute="leading" secondItem="rid-dK-C2H" secondAttribute="leading" constant="16" id="zyO-H2-g0A"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="yvV-e1-Kej"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ik2-oF-hri" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1476.8115942028987" y="639.50892857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gUE-hE-Xyd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QWS-C4-zBe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fcQ-rm-lat">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Uq3-qU-bof" kind="relationship" relationship="rootViewController" id="2j2-fu-dgW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="er4-cn-V5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="566.66666666666674" y="639.50892857142856"/>
+        </scene>
     </scenes>
     <resources>
         <image name="0" width="200" height="132"/>
+        <image name="auth_screen_logo" width="60" height="60"/>
         <image name="buttonActive" width="30" height="26"/>
         <image name="chevron.backward" width="9" height="16"/>
         <image name="sharing_button" width="51" height="51"/>
