@@ -291,7 +291,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="nav_back_button"/>
                                 <connections>
-                                    <action selector="didTapBackButton:" destination="d7Q-sg-jFr" eventType="touchUpInside" id="MvW-br-KMe"/>
+                                    <action selector="didTapBackButton:" destination="d7Q-sg-jFr" eventType="touchUpInside" id="4NL-8N-1pe"/>
                                 </connections>
                             </button>
                         </subviews>
