@@ -12,6 +12,7 @@
 		256D47952938CB72005BCDF8 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D47942938CB72005BCDF8 /* SingleImageViewController.swift */; };
 		257A83DB2948797A007EA8E8 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257A83DA2948797A007EA8E8 /* UILabel + Extensions.swift */; };
 		25BD7DA5296851E9009B7DC4 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BD7DA4296851E9009B7DC4 /* AuthViewController.swift */; };
+		25BD7DA829685617009B7DC4 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BD7DA729685617009B7DC4 /* WebViewViewController.swift */; };
 		25E26BC0292CFE3900816889 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E26BBF292CFE3900816889 /* AppDelegate.swift */; };
 		25E26BC2292CFE3900816889 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E26BC1292CFE3900816889 /* SceneDelegate.swift */; };
 		25E26BC4292CFE3900816889 /* ImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E26BC3292CFE3900816889 /* ImagesListViewController.swift */; };
@@ -30,6 +31,7 @@
 		256D47942938CB72005BCDF8 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		257A83DA2948797A007EA8E8 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		25BD7DA4296851E9009B7DC4 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		25BD7DA729685617009B7DC4 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		25E26BBC292CFE3900816889 /* RibbonPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RibbonPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E26BBF292CFE3900816889 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25E26BC1292CFE3900816889 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				25BD7DA4296851E9009B7DC4 /* AuthViewController.swift */,
+				25BD7DA729685617009B7DC4 /* WebViewViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				25E26BC4292CFE3900816889 /* ImagesListViewController.swift in Sources */,
 				25BD7DA5296851E9009B7DC4 /* AuthViewController.swift in Sources */,
 				25E26BE5292D45FC00816889 /* UIColor+Extensions.swift in Sources */,
+				25BD7DA829685617009B7DC4 /* WebViewViewController.swift in Sources */,
 				256D47952938CB72005BCDF8 /* SingleImageViewController.swift in Sources */,
 				25E26BD4292D285D00816889 /* ImagesListCell.swift in Sources */,
 				25E26BC0292CFE3900816889 /* AppDelegate.swift in Sources */,
