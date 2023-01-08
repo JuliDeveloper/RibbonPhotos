@@ -13,8 +13,6 @@ protocol WebViewViewControllerDelegate: AnyObject {
     func webViewViewControllerDidCancel(_ vc: WebViewViewController)
 }
 
-fileprivate let UnsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
-
 final class WebViewViewController: UIViewController {
     
     @IBOutlet private var webView: WKWebView!
@@ -73,7 +71,7 @@ final class WebViewViewController: UIViewController {
             URLQueryItem(name: "scope", value: AccessScope)
         ]
         let url = urlComponents.url!
-        
+
         let request = URLRequest(url: url)
         webView.load(request)
     }
