@@ -20,7 +20,8 @@ class OAuth2TokenStorage {
             userDefaults.string(forKey: Keys.bearerToken.rawValue)
         }
         set {
-            userDefaults.set(newValue, forKey: Keys.bearerToken.rawValue)
+            guard let data = newValue else { return }
+            userDefaults.set(data, forKey: Keys.bearerToken.rawValue)
         }
     }
 }

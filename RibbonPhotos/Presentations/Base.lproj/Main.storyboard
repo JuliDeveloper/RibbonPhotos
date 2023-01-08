@@ -55,7 +55,7 @@
                                                     <rect key="frame" x="16" y="118" width="382" height="30"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2022" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LB-Eo-MLV">
-                                                            <rect key="frame" x="8" y="6.5" width="92.5" height="15.5"/>
+                                                            <rect key="frame" x="8" y="6.5" width="97" height="15.5"/>
                                                             <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="13"/>
                                                             <color key="textColor" name="white"/>
                                                             <nil key="highlightedColor"/>
@@ -205,7 +205,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="l3U-RC-g62" kind="presentation" identifier="showFeed" id="2di-az-hBa"/>
                         <segue destination="QWS-C4-zBe" kind="presentation" identifier="showAuth" id="8g7-VH-mdk"/>
                     </connections>
                 </viewController>

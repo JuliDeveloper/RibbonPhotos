@@ -45,7 +45,6 @@ final class OAuth2Service: OAuth2ServiceProtocol {
                     let result = try JSONDecoder().decode(OAuthTokenResponseBody.self, from: data)
                     DispatchQueue.main.async {
                         completion(.success(result.accessToken))
-                        
                     }
                 } catch let error {
                     completion(.failure(error))
