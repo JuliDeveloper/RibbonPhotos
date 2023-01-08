@@ -14,12 +14,13 @@ protocol AuthViewControllerDelegate: AnyObject {
 fileprivate let showWebViewSegueIdentifier = "ShowWebView"
 
 final class AuthViewController: UIViewController {
-    
+    //MARK: - Properties
     private let oAuth2Service = OAuth2Service()
     private var oAuth2TokenStorage = OAuth2TokenStorage()
     
     weak var delegate: AuthViewControllerDelegate?
     
+    //MARK: - Helpers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showWebViewSegueIdentifier {
             guard let webViewViewController = segue.destination as? WebViewViewController else {
@@ -32,6 +33,7 @@ final class AuthViewController: UIViewController {
     }
 }
 
+//MARK: - WebViewViewControllerDelegate
 extension AuthViewController: WebViewViewControllerDelegate {
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
         delegate?.authViewController(self, didAuthenticateWithCode: code)

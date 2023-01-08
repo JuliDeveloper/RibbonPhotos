@@ -10,10 +10,11 @@ import UIKit
 fileprivate let showAuthIdentifier = "showAuth"
 
 final class SplashViewController: UIViewController {
-    
+    //MARK: - Properties
     private let oauth2Service = OAuth2Service()
     private let oauth2TokenStorage = OAuth2TokenStorage()
     
+    //MARK: - LifeCycle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -24,6 +25,7 @@ final class SplashViewController: UIViewController {
         }
     }
     
+    //Helpers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showAuthIdentifier {
             guard
@@ -51,6 +53,7 @@ final class SplashViewController: UIViewController {
     }
 }
 
+//MARK: - AuthViewControllerDelegate
 extension SplashViewController: AuthViewControllerDelegate {
     func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String) {
         switchToTabBarController()
