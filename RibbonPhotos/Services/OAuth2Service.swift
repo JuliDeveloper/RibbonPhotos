@@ -15,9 +15,7 @@ private enum NetworkError: Error {
     case codeError
 }
 
-final class OAuth2Service: OAuth2ServiceProtocol {
-    let shared = OAuth2Service()
-    
+final class OAuth2Service: OAuth2ServiceProtocol {    
     func fetchAuthToken(_ code: String, _ completion: @escaping (Result<String, Error>) -> Void) {
         var urlComponents = URLComponents(string: UnsplashAuthorizeURLString)!
         urlComponents.queryItems = [
@@ -32,7 +30,7 @@ final class OAuth2Service: OAuth2ServiceProtocol {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(error))
             }
@@ -47,11 +45,13 @@ final class OAuth2Service: OAuth2ServiceProtocol {
                     let result = try JSONDecoder().decode(OAuthTokenResponseBody.self, from: data)
                     DispatchQueue.main.async {
                         completion(.success(result.accessToken))
+                        
                     }
                 } catch let error {
                     completion(.failure(error))
                 }
             }
-        }.resume()
+        }
+        task.resume()
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QWS-C4-zBe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sgl-2c-uxO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -185,10 +185,38 @@
             </objects>
             <point key="canvasLocation" x="566.66666666666674" y="-97.098214285714278"/>
         </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="6UW-eP-NYm">
+            <objects>
+                <viewController id="sgl-2c-uxO" customClass="SplashViewController" customModule="RibbonPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GGj-Ey-4bw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vector" translatesAutoresizingMaskIntoConstraints="NO" id="ZS2-cu-dbn">
+                                <rect key="frame" x="169.5" y="409" width="75" height="78"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WML-Hw-O6O"/>
+                        <color key="backgroundColor" name="black"/>
+                        <constraints>
+                            <constraint firstItem="ZS2-cu-dbn" firstAttribute="centerY" secondItem="GGj-Ey-4bw" secondAttribute="centerY" id="Lwy-m2-ni6"/>
+                            <constraint firstItem="ZS2-cu-dbn" firstAttribute="centerX" secondItem="GGj-Ey-4bw" secondAttribute="centerX" id="cgC-td-BVW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="l3U-RC-g62" kind="presentation" identifier="showFeed" id="2di-az-hBa"/>
+                        <segue destination="QWS-C4-zBe" kind="presentation" identifier="showAuth" id="8g7-VH-mdk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ek3-cx-uob" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2433" y="930"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1ai-T4-JBv">
             <objects>
-                <tabBarController id="l3U-RC-g62" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" modalPresentationStyle="fullScreen" id="l3U-RC-g62" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gXI-bW-MmO">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -268,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ik2-oF-hri" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="509" y="1379"/>
+            <point key="canvasLocation" x="-320" y="1495"/>
         </scene>
         <!--Web View View Controller-->
         <scene sceneID="B5a-BG-TU8">
@@ -320,12 +348,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofY-ju-FvZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1305.7971014492755" y="1378.7946428571429"/>
+            <point key="canvasLocation" x="567" y="1495"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gUE-hE-Xyd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QWS-C4-zBe" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="QWS-C4-zBe" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fcQ-rm-lat">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
@@ -338,7 +366,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="er4-cn-V5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-320" y="1379"/>
+            <point key="canvasLocation" x="-1217" y="1495"/>
         </scene>
     </scenes>
     <resources>
@@ -350,6 +378,7 @@
         <image name="sharing_button" width="51" height="51"/>
         <image name="tab_editorial_active" width="20" height="22"/>
         <image name="tab_profile_active" width="24" height="24"/>
+        <image name="vector" width="75" height="78"/>
         <namedColor name="black">
             <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

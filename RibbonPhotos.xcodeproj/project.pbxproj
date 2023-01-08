@@ -26,6 +26,7 @@
 		25E26BE5292D45FC00816889 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E26BE4292D45FC00816889 /* UIColor+Extensions.swift */; };
 		25E26BED292D55A900816889 /* YS Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 25E26BE9292D55A400816889 /* YS Display-Bold.ttf */; };
 		25E26BEE292D55AC00816889 /* YS Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 25E26BEA292D55A400816889 /* YS Display-Medium.ttf */; };
+		25FB06D1296B1D2300E3E824 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FB06D0296B1D2300E3E824 /* SplashViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		25E26BE4292D45FC00816889 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		25E26BE9292D55A400816889 /* YS Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Bold.ttf"; sourceTree = "<group>"; };
 		25E26BEA292D55A400816889 /* YS Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Medium.ttf"; sourceTree = "<group>"; };
+		25FB06D0296B1D2300E3E824 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				25BD7DA629685516009B7DC4 /* Auth */,
 				25E26BD5292D288300816889 /* ImagesList */,
 				25FB06CF296B15E500E3E824 /* Profile */,
+				25FB06D0296B1D2300E3E824 /* SplashViewController.swift */,
 			);
 			path = Presentations;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				25B98C62296AFAD000F17C0B /* OAuth2TokenStorage.swift in Sources */,
 				25BD7DA829685617009B7DC4 /* WebViewViewController.swift in Sources */,
 				256D47952938CB72005BCDF8 /* SingleImageViewController.swift in Sources */,
+				25FB06D1296B1D2300E3E824 /* SplashViewController.swift in Sources */,
 				25E26BD4292D285D00816889 /* ImagesListCell.swift in Sources */,
 				25E26BC0292CFE3900816889 /* AppDelegate.swift in Sources */,
 				257A83DB2948797A007EA8E8 /* UILabel + Extensions.swift in Sources */,

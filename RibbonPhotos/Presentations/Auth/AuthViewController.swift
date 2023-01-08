@@ -7,10 +7,18 @@
 
 import UIKit
 
+protocol AuthViewControllerDelegate: AnyObject {
+    func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String)
+}
+
+fileprivate let showWebViewSegueIdentifier = "ShowWebView"
+
 final class AuthViewController: UIViewController {
     
-    private let showWebViewSegueIdentifier = "ShowWebView"
-    private var storage = OAuth2TokenStorage()
+    private let oAuth2Service = OAuth2Service()
+    private var oAuth2TokenStorage = OAuth2TokenStorage()
+    
+    weak var delegate: AuthViewControllerDelegate?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showWebViewSegueIdentifier {
@@ -26,16 +34,17 @@ final class AuthViewController: UIViewController {
 
 extension AuthViewController: WebViewViewControllerDelegate {
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
-        OAuth2Service().shared.fetchAuthToken(code) { [weak self] result in
+        delegate?.authViewController(self, didAuthenticateWithCode: code)
+        
+        oAuth2Service.fetchAuthToken(code) { [weak self] result in
             guard let self = self else { return }
             
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let accessToken):
-                    self.storage.bearerToken = accessToken
-                case .failure(let error):
-                    print(error)
-                }
+            switch result {
+            case .success(let accessToken):
+                self.oAuth2TokenStorage.bearerToken = accessToken
+                self.delegate?.authViewController(self, didAuthenticateWithCode: accessToken)
+            case .failure(let error):
+                print(error)
             }
         }
     }
