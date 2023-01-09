@@ -66,12 +66,12 @@ final class WebViewViewController: UIViewController {
     }
     
     private func fetchRequest() {
-        var urlComponents = URLComponents(string: Constant.unsplashAuthorizeURLString)!
+        var urlComponents = URLComponents(string: Constants.unsplashAuthorizeURLString)!
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: Constant.accessKey),
-            URLQueryItem(name: "redirect_uri", value: Constant.redirectURI),
+            URLQueryItem(name: "client_id", value: Constants.accessKey),
+            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
             URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: Constant.accessScope)
+            URLQueryItem(name: "scope", value: Constants.accessScope)
         ]
         let url = urlComponents.url!
 
