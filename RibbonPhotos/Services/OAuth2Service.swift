@@ -17,12 +17,12 @@ private enum NetworkError: Error {
 
 final class OAuth2Service: OAuth2ServiceProtocol {    
     func fetchAuthToken(_ code: String, _ completion: @escaping (Result<String, Error>) -> Void) {
-        var urlComponents = URLComponents(string: UnsplashAuthorizeURLString)!
+        var urlComponents = URLComponents(string: Constant.unsplashAuthorizeURLString)!
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: AccessKey),
-            URLQueryItem(name: "redirect_uri", value: RedirectURI),
+            URLQueryItem(name: "client_id", value: Constant.accessKey),
+            URLQueryItem(name: "redirect_uri", value: Constant.redirectURI),
             URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: AccessScope)
+            URLQueryItem(name: "scope", value: Constant.accessScope)
         ]
         let url = urlComponents.url!
         print(url)
