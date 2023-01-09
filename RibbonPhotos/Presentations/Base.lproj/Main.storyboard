@@ -55,7 +55,7 @@
                                                     <rect key="frame" x="16" y="118" width="382" height="30"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2022" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LB-Eo-MLV">
-                                                            <rect key="frame" x="8" y="6.5" width="97" height="15.5"/>
+                                                            <rect key="frame" x="8" y="6.5" width="92.5" height="15.5"/>
                                                             <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="13"/>
                                                             <color key="textColor" name="white"/>
                                                             <nil key="highlightedColor"/>
@@ -306,7 +306,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAO-PZ-fdJ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="87" width="414" height="733"/>
                                 <color key="backgroundColor" name="white"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -329,12 +329,12 @@
                         <viewLayoutGuide key="safeArea" id="01k-r2-alN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="HAO-PZ-fdJ" secondAttribute="bottom" id="12I-vd-3FC"/>
+                            <constraint firstAttribute="bottom" secondItem="HAO-PZ-fdJ" secondAttribute="bottom" constant="76" id="12I-vd-3FC"/>
                             <constraint firstItem="g1Z-uT-ypd" firstAttribute="top" secondItem="TMW-SI-YzU" secondAttribute="bottom" constant="12" id="Aco-5O-gGS"/>
                             <constraint firstItem="HAO-PZ-fdJ" firstAttribute="leading" secondItem="eWu-Fm-ccT" secondAttribute="leading" id="ICo-bl-tHr"/>
                             <constraint firstAttribute="trailing" secondItem="HAO-PZ-fdJ" secondAttribute="trailing" id="JQj-St-KiS"/>
                             <constraint firstItem="TMW-SI-YzU" firstAttribute="leading" secondItem="eWu-Fm-ccT" secondAttribute="leading" constant="16" id="Z27-Gr-eFY"/>
-                            <constraint firstItem="HAO-PZ-fdJ" firstAttribute="top" secondItem="eWu-Fm-ccT" secondAttribute="top" id="ZuN-Pb-vwJ"/>
+                            <constraint firstItem="HAO-PZ-fdJ" firstAttribute="top" secondItem="eWu-Fm-ccT" secondAttribute="top" constant="87" id="ZuN-Pb-vwJ"/>
                             <constraint firstItem="TMW-SI-YzU" firstAttribute="top" secondItem="eWu-Fm-ccT" secondAttribute="top" constant="59" id="abM-4L-rtA"/>
                             <constraint firstItem="g1Z-uT-ypd" firstAttribute="leading" secondItem="eWu-Fm-ccT" secondAttribute="leading" id="eji-MW-53F"/>
                             <constraint firstAttribute="trailing" secondItem="g1Z-uT-ypd" secondAttribute="trailing" id="jAQ-sa-8Ji"/>
