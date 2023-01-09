@@ -37,16 +37,19 @@ final class AuthViewController: UIViewController {
 extension AuthViewController: WebViewViewControllerDelegate {
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
         delegate?.authViewController(self, didAuthenticateWithCode: code)
-        
-        oAuth2Service.fetchAuthToken(code) { [weak self] result in
+        oAuth2Service.fetchAuthToken(code) { [weak self] result in // проверить !!!
             guard let self = self else { return }
-            
             switch result {
             case .success(let accessToken):
-                self.oAuth2TokenStorage.bearerToken = accessToken
-                self.delegate?.authViewController(self, didAuthenticateWithCode: accessToken)
+                DispatchQueue.main.async {
+                    print(accessToken)
+                    self.oAuth2TokenStorage.bearerToken = accessToken
+                    self.delegate?.authViewController(self, didAuthenticateWithCode: accessToken)
+                }
             case .failure(let error):
-                print(error)
+                DispatchQueue.main.async {
+                    print(error)
+                }
             }
         }
     }

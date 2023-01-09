@@ -31,21 +31,22 @@ final class OAuth2Service: OAuth2ServiceProtocol {
         request.httpMethod = "POST"
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode <= 200 && response.statusCode < 300 {
+                    print("STATUSCODE: \(response.statusCode)")
+                    completion(.success("\(response.statusCode)"))
+                } else {
+                    completion(.failure(NetworkError.codeError))
+                }
+            } else if let error = error {
                 completion(.failure(error))
-            }
-            
-            if let response = response as? HTTPURLResponse,
-               response.statusCode < 200 || response.statusCode <= 300 {
-                completion(.failure(NetworkError.codeError))
             }
             
             if let data = data {
                 do {
                     let result = try JSONDecoder().decode(OAuthTokenResponseBody.self, from: data)
-                    DispatchQueue.main.async {
-                        completion(.success(result.accessToken))
-                    }
+                    print("TOKEN: \(result.accessToken)")
+                    completion(.success(result.accessToken))
                 } catch let error {
                     completion(.failure(error))
                 }

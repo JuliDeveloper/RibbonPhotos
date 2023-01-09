@@ -18,7 +18,7 @@ final class SplashViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if oauth2TokenStorage.bearerToken != nil {
+        if let token = oauth2TokenStorage.bearerToken {
             switchToTabBarController()
         } else {
             performSegue(withIdentifier: showAuthIdentifier, sender: nil)
@@ -56,6 +56,21 @@ final class SplashViewController: UIViewController {
 //MARK: - AuthViewControllerDelegate
 extension SplashViewController: AuthViewControllerDelegate {
     func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String) {
-        switchToTabBarController()
+        self.fetchOAuthToken(code)
+        dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            self.fetchOAuthToken(code)
+        }
+    }
+    
+    private func fetchOAuthToken(_ code: String) {
+        oauth2Service.fetchAuthToken(code) { result in
+            switch result {
+            case .success:
+                self.switchToTabBarController()
+            case .failure:
+                print("Error getting token")
+            }
+        }
     }
 }
