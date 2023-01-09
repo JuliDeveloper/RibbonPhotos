@@ -70,9 +70,13 @@ extension SplashViewController: AuthViewControllerDelegate {
             guard let self = self else { return }
             switch result {
             case .success:
-                self.switchToTabBarController()
+                DispatchQueue.main.async {
+                    self.switchToTabBarController()
+                }
             case .failure:
-                print("Error getting token")
+                DispatchQueue.main.async {
+                    print("Error getting token")
+                }
             }
         }
     }
