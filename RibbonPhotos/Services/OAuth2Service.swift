@@ -15,12 +15,15 @@ private enum NetworkError: Error {
     case codeError
 }
 
-final class OAuth2Service: OAuth2ServiceProtocol {    
+final class OAuth2Service: OAuth2ServiceProtocol {
+    
+    let oauth2TokenStorage = OAuth2TokenStorage()
+    
     func fetchAuthToken(_ code: String, _ completion: @escaping (Result<String, Error>) -> Void) {
-        var urlComponents = URLComponents(string: Constants.unsplashAuthorizeURLString)!
+        var urlComponents = URLComponents(string: Constants.unsplashAuthorizeTokenURLString)!
         urlComponents.queryItems = [
             URLQueryItem(name: "client_id", value: Constants.accessKey),
-            URLQueryItem(name: "client_secreti", value: Constants.secretKey),
+            URLQueryItem(name: "client_secret", value: Constants.secretKey),
             URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
             URLQueryItem(name: "code", value: code),
             URLQueryItem(name: "grant_type", value: "authorization_code")
@@ -47,6 +50,7 @@ final class OAuth2Service: OAuth2ServiceProtocol {
                 do {
                     let result = try JSONDecoder().decode(OAuthTokenResponseBody.self, from: data)
                     print("TOKEN: \(result.accessToken)")
+                    self.oauth2TokenStorage.bearerToken = result.accessToken
                     completion(.success(result.accessToken))
                 } catch let error {
                     completion(.failure(error))
