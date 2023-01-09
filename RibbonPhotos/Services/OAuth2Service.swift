@@ -20,9 +20,10 @@ final class OAuth2Service: OAuth2ServiceProtocol {
         var urlComponents = URLComponents(string: Constants.unsplashAuthorizeURLString)!
         urlComponents.queryItems = [
             URLQueryItem(name: "client_id", value: Constants.accessKey),
+            URLQueryItem(name: "client_secreti", value: Constants.secretKey),
             URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
-            URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: Constants.accessScope)
+            URLQueryItem(name: "code", value: code),
+            URLQueryItem(name: "grant_type", value: "authorization_code")
         ]
         let url = urlComponents.url!
         print(url)
