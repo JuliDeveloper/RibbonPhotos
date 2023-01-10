@@ -17,12 +17,7 @@ final class SplashViewController: UIViewController {
     //MARK: - LifeCycle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if oauth2TokenStorage.bearerToken != nil {
-            switchToTabBarController()
-        } else {
-            performSegue(withIdentifier: showAuthIdentifier, sender: nil)
-        }
+        showUserScenario()
     }
     
     //Helpers
@@ -51,33 +46,22 @@ final class SplashViewController: UIViewController {
         
         window.rootViewController = tabBarController
     }
+    
+    private func showUserScenario() {
+        if oauth2TokenStorage.bearerToken != nil {
+            switchToTabBarController()
+        } else {
+            performSegue(withIdentifier: showAuthIdentifier, sender: nil)
+        }
+    }
 }
 
 //MARK: - AuthViewControllerDelegate
 extension SplashViewController: AuthViewControllerDelegate {
-    func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String) {
-        self.fetchOAuthToken(code)
+    func didAuthenticate() {
         dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.fetchOAuthToken(code)
-            }
-        }
-    }
-    
-    private func fetchOAuthToken(_ code: String) {
-        oauth2Service.fetchAuthToken(code) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success:
-                DispatchQueue.main.async {
-                    self.switchToTabBarController()
-                }
-            case .failure:
-                DispatchQueue.main.async {
-                    print("Error getting token")
-                }
-            }
+            self.showUserScenario()
         }
     }
 }

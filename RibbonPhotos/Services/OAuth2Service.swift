@@ -37,12 +37,10 @@ final class OAuth2Service: OAuth2ServiceProtocol {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data,
-               let response = response as? HTTPURLResponse,
-               let error = error {
+               let response = response as? HTTPURLResponse {
                 if response.statusCode <= 200 && response.statusCode < 300 {
-                    print("STATUSCODE: \(response.statusCode)")
                     completion(.success(data))
-                } else {
+                } else if let error = error  {
                     completion(.failure(error))
                 }
             }
@@ -57,7 +55,6 @@ final class OAuth2Service: OAuth2ServiceProtocol {
                 do {
                     let responseBody = try JSONDecoder().decode(OAuthTokenResponseBody.self, from: data)
                     print("TOKEN: \(responseBody.accessToken)")
-                    self.oauth2TokenStorage.bearerToken = responseBody.accessToken
                     completion(.success(responseBody.accessToken))
                 } catch {
                     completion(.failure(NetworkError.codeError))

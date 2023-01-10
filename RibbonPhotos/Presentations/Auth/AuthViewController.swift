@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AuthViewControllerDelegate: AnyObject {
-    func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String)
+    func didAuthenticate()
 }
 
 fileprivate let showWebViewSegueIdentifier = "ShowWebView"
@@ -36,18 +36,14 @@ final class AuthViewController: UIViewController {
 //MARK: - WebViewViewControllerDelegate
 extension AuthViewController: WebViewViewControllerDelegate {
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
-        delegate?.authViewController(self, didAuthenticateWithCode: code)
         oAuth2Service.fetchAuthToken(code) { [weak self] result in
             guard let self = self else { return }
-            switch result {
-            case .success(let accessToken):
-                DispatchQueue.main.async {
-                    print(accessToken)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let accessToken):
                     self.oAuth2TokenStorage.bearerToken = accessToken
-                    self.delegate?.authViewController(self, didAuthenticateWithCode: accessToken)
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
+                    self.delegate?.didAuthenticate()
+                case .failure(let error):
                     print(error)
                 }
             }
