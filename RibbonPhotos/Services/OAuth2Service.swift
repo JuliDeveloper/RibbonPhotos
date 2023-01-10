@@ -17,11 +17,8 @@ private enum NetworkError: Error {
 }
 
 final class OAuth2Service: OAuth2ServiceProtocol {
-    
-    let oauth2TokenStorage = OAuth2TokenStorage()
-    
     func fetchData(_ code: String, _ completion: @escaping (Result<Data, Error>) -> Void) {
-        var urlComponents = URLComponents(string: Constants.unsplashAuthorizeTokenURLString)!
+        guard var urlComponents = URLComponents(string: Constants.unsplashAuthorizeTokenURLString) else { return }
         urlComponents.queryItems = [
             URLQueryItem(name: "client_id", value: Constants.accessKey),
             URLQueryItem(name: "client_secret", value: Constants.secretKey),

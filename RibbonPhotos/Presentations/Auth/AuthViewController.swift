@@ -31,6 +31,10 @@ final class AuthViewController: UIViewController {
             super.prepare(for: segue, sender: sender)
         }
     }
+    
+    private func saveAccessToken(_ accessToken: String) {
+        oAuth2TokenStorage.bearerToken = accessToken
+    }
 }
 
 //MARK: - WebViewViewControllerDelegate
@@ -41,7 +45,7 @@ extension AuthViewController: WebViewViewControllerDelegate {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let accessToken):
-                    self.oAuth2TokenStorage.bearerToken = accessToken
+                    self.saveAccessToken(accessToken)
                     self.delegate?.didAuthenticate()
                 case .failure(let error):
                     print(error)

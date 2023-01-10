@@ -11,7 +11,6 @@ fileprivate let showAuthIdentifier = "showAuth"
 
 final class SplashViewController: UIViewController {
     //MARK: - Properties
-    private let oauth2Service = OAuth2Service()
     private let oauth2TokenStorage = OAuth2TokenStorage()
     
     //MARK: - LifeCycle
