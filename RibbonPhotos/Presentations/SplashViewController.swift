@@ -60,10 +60,6 @@ final class SplashViewController: UIViewController {
 extension SplashViewController: AuthViewControllerDelegate {
     func didAuthenticate() {
         ProgressHUD.show()
-        dismiss(animated: true) { [weak self] in
-            guard let self = self else { return }
-            ProgressHUD.dismiss()
-            self.showUserScenario()
-        }
+        self.showUserScenario()
     }
 }

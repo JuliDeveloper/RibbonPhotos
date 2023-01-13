@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 protocol AuthViewControllerDelegate: AnyObject {
     func didAuthenticate()
@@ -47,8 +48,10 @@ extension AuthViewController: WebViewViewControllerDelegate {
                 case .success(let accessToken):
                     self.saveAccessToken(accessToken)
                     self.delegate?.didAuthenticate()
+                    ProgressHUD.dismiss()
                 case .failure(let error):
                     print(error)
+                    ProgressHUD.dismiss()
                 }
             }
         }
