@@ -58,9 +58,6 @@ final class SplashViewController: UIViewController {
 //MARK: - AuthViewControllerDelegate
 extension SplashViewController: AuthViewControllerDelegate {
     func didAuthenticate() {
-        dismiss(animated: true) { [weak self] in
-            guard let self = self else { return }
-            self.showUserScenario()
-        }
+        self.showUserScenario()
     }
 }

@@ -35,7 +35,7 @@ final class OAuth2Service: OAuth2ServiceProtocol {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data,
                let response = response as? HTTPURLResponse {
-                if response.statusCode <= 200 && response.statusCode < 300 {
+                if response.statusCode >= 200 && response.statusCode < 300 {
                     completion(.success(data))
                 } else if let error = error  {
                     completion(.failure(error))
