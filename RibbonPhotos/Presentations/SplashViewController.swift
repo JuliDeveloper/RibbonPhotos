@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ProgressHUD
 
 fileprivate let showAuthIdentifier = "showAuth"
 
@@ -59,7 +58,7 @@ final class SplashViewController: UIViewController {
 //MARK: - AuthViewControllerDelegate
 extension SplashViewController: AuthViewControllerDelegate {
     func didAuthenticate() {
-        ProgressHUD.show()
+        UIBlockingProgressHUD.show()
         self.showUserScenario()
     }
 }
