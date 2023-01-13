@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		25149F94295DC0E600713582 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25149F93295DC0E600713582 /* Constants.swift */; };
+		2553F04D2971860B00A1441E /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 2553F04C2971860B00A1441E /* ProgressHUD */; };
 		256D47932938BBC0005BCDF8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D47922938BBC0005BCDF8 /* ProfileViewController.swift */; };
 		256D47952938CB72005BCDF8 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D47942938CB72005BCDF8 /* SingleImageViewController.swift */; };
 		257A83DB2948797A007EA8E8 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257A83DA2948797A007EA8E8 /* UILabel + Extensions.swift */; };
@@ -59,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2553F04D2971860B00A1441E /* ProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +207,9 @@
 			dependencies = (
 			);
 			name = RibbonPhotos;
+			packageProductDependencies = (
+				2553F04C2971860B00A1441E /* ProgressHUD */,
+			);
 			productName = RibbonPhotos;
 			productReference = 25E26BBC292CFE3900816889 /* RibbonPhotos.app */;
 			productType = "com.apple.product-type.application";
@@ -233,6 +238,9 @@
 				Base,
 			);
 			mainGroup = 25E26BB3292CFE3900816889;
+			packageReferences = (
+				2553F04B2971860B00A1441E /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+			);
 			productRefGroup = 25E26BBD292CFE3900816889 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -502,6 +510,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2553F04B2971860B00A1441E /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2553F04C2971860B00A1441E /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2553F04B2971860B00A1441E /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 25E26BB4292CFE3900816889 /* Project object */;
 }
