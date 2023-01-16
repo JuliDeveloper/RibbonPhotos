@@ -12,6 +12,7 @@ fileprivate let showAuthIdentifier = "showAuth"
 final class SplashViewController: UIViewController {
     //MARK: - Properties
     private let oauth2TokenStorage = OAuth2TokenStorage()
+    private let profileService = ProfileService.shared
     
     //MARK: - LifeCycle
     override func viewDidAppear(_ animated: Bool) {
@@ -19,7 +20,7 @@ final class SplashViewController: UIViewController {
         showUserScenario()
     }
     
-    //Helpers
+    //MARK: - Helpers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showAuthIdentifier {
             guard
@@ -49,8 +50,21 @@ final class SplashViewController: UIViewController {
     private func showUserScenario() {
         if oauth2TokenStorage.bearerToken != nil {
             switchToTabBarController()
+            fetchProfile(token: oauth2TokenStorage.bearerToken ?? "")
         } else {
             performSegue(withIdentifier: showAuthIdentifier, sender: nil)
+        }
+    }
+    
+    private func fetchProfile(token: String) {
+        profileService.fetchProfile(token) { result in
+            switch result {
+            case .success:
+                print("!!!!!!!! success")
+            case .failure:
+                // TODO [Sprint 11] Показать ошибку
+                break
+            }
         }
     }
 }

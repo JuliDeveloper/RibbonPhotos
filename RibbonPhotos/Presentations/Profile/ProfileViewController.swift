@@ -52,10 +52,17 @@ final class ProfileViewController: UIViewController {
         return button
     }()
     
+    private let profileService = ProfileService.shared
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupProfileInfo(profileService.profile ?? Profile(
+            username: "11",
+            name: "22",
+            loginName: "33",
+            bio: "44"
+        ))
         addSubviews()
         setupConstraints()
     }
@@ -89,6 +96,15 @@ final class ProfileViewController: UIViewController {
             logoutButton.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor),
             logoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
+    }
+    
+    private func setupProfileInfo(_ profile: Profile) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.nameLabel.text = profile.name
+            self.usernameLabel.text = profile.loginName
+            self.statusLabel.text = profile.bio
+        }
     }
 
     @objc private func didTapButton() {
