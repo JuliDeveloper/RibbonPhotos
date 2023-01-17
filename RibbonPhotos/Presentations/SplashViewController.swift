@@ -13,6 +13,7 @@ final class SplashViewController: UIViewController {
     //MARK: - Properties
     private let oauth2TokenStorage = OAuth2TokenStorage()
     private let profileService = ProfileService.shared
+    private let profileImageService = ProfileImageService.shared
     
     //MARK: - LifeCycle
     override func viewDidAppear(_ animated: Bool) {
@@ -59,7 +60,11 @@ final class SplashViewController: UIViewController {
     private func fetchProfile(token: String) {
         profileService.fetchProfile(token) { result in
             switch result {
-            case .success:
+            case .success(let profile):
+                self.profileImageService.fetchProfileImageURL(token, username: profile.username ?? "") { _ in
+                    print("AVATAR SUCCESS")
+                    print("\(profile.username ?? "")")
+                }
                 print("!!!!!!!! success")
             case .failure:
                 // TODO [Sprint 11] Показать ошибку
