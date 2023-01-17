@@ -35,46 +35,31 @@ final class ProfileService: ProfileServiceProtocol {
         return request
     }
     
-    private func fetchData(_ token: String, _ completion: @escaping (Result<Data, Error>) -> Void) {
+    func fetchProfile(_ token: String, completion: @escaping (Result<Profile, Error>) -> Void) {
         assert(Thread.isMainThread)
         task?.cancel()
         
         let request = makeRequest(token)
         let session = urlSession
-        let task = session.dataTask(with: request) { data, _, error in
-            if let data = data {
-                completion(.success(data))
-                self.task = nil
-            } else if let error = error {
-                completion(.failure(error))
-            }
-        }
-        
-        self.task = task
-        task.resume()
-    }
-    
-    func fetchProfile(_ token: String, completion: @escaping (Result<Profile, Error>) -> Void) {
-        fetchData(token) { [weak self] result in
+        let task = session.objectTask(for: request) { [weak self] (result: Result<ProfileResult, Error>) in
             guard let self = self else { return }
+            
             switch result {
-            case .success(let data):
-                do {
-                    let profileInfo = try JSONDecoder().decode(ProfileResult.self, from: data)
-                    let currentProfile = self.convertFrom(profileResult: profileInfo)
-                    self.profile = currentProfile
-                    completion(.success(self.profile ?? Profile(
-                        username: "failure",
-                        name: "failure",
-                        loginName: "failure",
-                        bio: "failure"
-                    )))
-                } catch let error {
-                    print(error)
-                }
+            case .success(let profileResult):
+                let currentProfile = self.convertFrom(profileResult: profileResult)
+                self.profile = currentProfile
+                completion(.success(self.profile ?? Profile(
+                    username: "failure",
+                    name: "failure",
+                    loginName: "failure",
+                    bio: "failure"
+                )))
+                self.task = nil
             case .failure(let error):
                 completion(.failure(error))
             }
         }
+        self.task = task
+        task.resume()
     }
 }

@@ -37,7 +37,7 @@ final class OAuth2Service: OAuth2ServiceProtocol {
         return request
     }
     
-    private func fetchData(_ code: String, _ completion: @escaping (Result<Data, Error>) -> Void) {
+    func fetchAuthToken(_ code: String, _ completion: @escaping (Result<String, Error>) -> Void) {
         assert(Thread.isMainThread)
         if lastCode == code { return }
         task?.cancel()
@@ -45,38 +45,18 @@ final class OAuth2Service: OAuth2ServiceProtocol {
         
         let request = makeRequest(code: code)
         let session = urlSession
-        let task = session.dataTask(with: request) { data, response, error in
-            if let data = data,
-               let response = response as? HTTPURLResponse {
-                if response.statusCode >= 200 && response.statusCode < 300 {
-                    completion(.success(data))
-                    self.task = nil
-                    if error != nil {
-                        self.lastCode = nil
-                    }
-                } else if let error = error  {
-                    completion(.failure(error))
-                }
-            }
-        }
-        self.task = task
-        task.resume()
-    }
-    
-    func fetchAuthToken(_ code: String, _ completion: @escaping (Result<String, Error>) -> Void) {
-        fetchData(code) { result in
+        let task = session.objectTask(for: request) { [weak self] (result: Result<OAuthTokenResponseBody, Error>) in
+            guard let self = self else { return }
+            
             switch result {
-            case .success(let data):
-                do {
-                    let responseBody = try JSONDecoder().decode(OAuthTokenResponseBody.self, from: data)
-                    print("TOKEN: \(responseBody.accessToken)")
-                    completion(.success(responseBody.accessToken))
-                } catch {
-                    completion(.failure(NetworkError.codeError))
-                }
+            case .success(let responseBody):
+                completion(.success(responseBody.accessToken))
+                self.task = nil
             case .failure(let error):
                 completion(.failure(error))
             }
         }
+        self.task = task
+        task.resume()
     }
 }
