@@ -58,19 +58,32 @@ final class SplashViewController: UIViewController {
     }
     
     private func fetchProfile(token: String) {
-        profileService.fetchProfile(token) { result in
-            switch result {
-            case .success(let profile):
-                self.profileImageService.fetchProfileImageURL(token, username: profile.username ?? "") { _ in
-                    print("AVATAR SUCCESS")
-                    print("\(profile.username ?? "")")
+        profileService.fetchProfile(token) { [weak self] result in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let profile):
+                    self.profileImageService.fetchProfileImageURL(token, username: profile.username ?? "") { _ in
+                        print("AVATAR SUCCESS")
+                        print("\(profile.username ?? "")")
+                    }
+                    print("!!!!!!!! success")
+                case .failure:
+                    self.showAlert()
+                    break
                 }
-                print("!!!!!!!! success")
-            case .failure:
-                // TODO [Sprint 11] Показать ошибку
-                break
             }
         }
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: "Что-то пошло не так(", message: "Не удалось войти в систему", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default)
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true)
     }
 }
 

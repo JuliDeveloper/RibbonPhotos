@@ -25,7 +25,7 @@ final class ProfileImageService {
     }
     
     func fetchProfileImageURL(_ token: String, username: String, _ completion: @escaping (Result<String, Error>) -> Void) {
-        //assert(Thread.isMainThread)
+        assert(Thread.isMainThread)
         task?.cancel()
         
         let request = makeRequest(token, username: username)
