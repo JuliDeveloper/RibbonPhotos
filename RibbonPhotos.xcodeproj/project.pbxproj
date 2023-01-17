@@ -15,6 +15,7 @@
 		2553F05729742EC400A1441E /* ProfileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2553F05629742EC400A1441E /* ProfileResult.swift */; };
 		2553F05929758D6300A1441E /* ProfileImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2553F05829758D6300A1441E /* ProfileImageService.swift */; };
 		2553F05B29758DE700A1441E /* UserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2553F05A29758DE700A1441E /* UserResult.swift */; };
+		2553F05D2976D69700A1441E /* URLSession + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2553F05C2976D69700A1441E /* URLSession + Extension.swift */; };
 		256D47932938BBC0005BCDF8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D47922938BBC0005BCDF8 /* ProfileViewController.swift */; };
 		256D47952938CB72005BCDF8 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D47942938CB72005BCDF8 /* SingleImageViewController.swift */; };
 		257A83DB2948797A007EA8E8 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257A83DA2948797A007EA8E8 /* UILabel + Extensions.swift */; };
@@ -30,7 +31,7 @@
 		25E26BC9292CFE3A00816889 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25E26BC8292CFE3A00816889 /* Assets.xcassets */; };
 		25E26BCC292CFE3A00816889 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E26BCA292CFE3A00816889 /* LaunchScreen.storyboard */; };
 		25E26BD4292D285D00816889 /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E26BD3292D285D00816889 /* ImagesListCell.swift */; };
-		25E26BE5292D45FC00816889 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E26BE4292D45FC00816889 /* UIColor+Extensions.swift */; };
+		25E26BE5292D45FC00816889 /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E26BE4292D45FC00816889 /* UIColor + Extensions.swift */; };
 		25E26BED292D55A900816889 /* YS Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 25E26BE9292D55A400816889 /* YS Display-Bold.ttf */; };
 		25E26BEE292D55AC00816889 /* YS Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 25E26BEA292D55A400816889 /* YS Display-Medium.ttf */; };
 		25FB06D1296B1D2300E3E824 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FB06D0296B1D2300E3E824 /* SplashViewController.swift */; };
@@ -44,6 +45,7 @@
 		2553F05629742EC400A1441E /* ProfileResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResult.swift; sourceTree = "<group>"; };
 		2553F05829758D6300A1441E /* ProfileImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageService.swift; sourceTree = "<group>"; };
 		2553F05A29758DE700A1441E /* UserResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResult.swift; sourceTree = "<group>"; };
+		2553F05C2976D69700A1441E /* URLSession + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession + Extension.swift"; sourceTree = "<group>"; };
 		256D47922938BBC0005BCDF8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		256D47942938CB72005BCDF8 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		257A83DA2948797A007EA8E8 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
@@ -61,7 +63,7 @@
 		25E26BCB292CFE3A00816889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25E26BCD292CFE3A00816889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25E26BD3292D285D00816889 /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
-		25E26BE4292D45FC00816889 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		25E26BE4292D45FC00816889 /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 		25E26BE9292D55A400816889 /* YS Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Bold.ttf"; sourceTree = "<group>"; };
 		25E26BEA292D55A400816889 /* YS Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Medium.ttf"; sourceTree = "<group>"; };
 		25FB06D0296B1D2300E3E824 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -94,8 +96,9 @@
 		250F3271292E54FB00345F2B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				25E26BE4292D45FC00816889 /* UIColor+Extensions.swift */,
+				25E26BE4292D45FC00816889 /* UIColor + Extensions.swift */,
 				257A83DA2948797A007EA8E8 /* UILabel + Extensions.swift */,
+				2553F05C2976D69700A1441E /* URLSession + Extension.swift */,
 				25149F93295DC0E600713582 /* Constants.swift */,
 			);
 			path = Helpers;
@@ -296,7 +299,7 @@
 				2553F05B29758DE700A1441E /* UserResult.swift in Sources */,
 				25BD7DA5296851E9009B7DC4 /* AuthViewController.swift in Sources */,
 				25B98C5E296AE2E300F17C0B /* OAuthTokenResponseBody.swift in Sources */,
-				25E26BE5292D45FC00816889 /* UIColor+Extensions.swift in Sources */,
+				25E26BE5292D45FC00816889 /* UIColor + Extensions.swift in Sources */,
 				2553F05529742BAA00A1441E /* Profile.swift in Sources */,
 				2553F05329742AC200A1441E /* ProfileService.swift in Sources */,
 				25B98C62296AFAD000F17C0B /* OAuth2TokenStorage.swift in Sources */,
@@ -306,6 +309,7 @@
 				25E26BD4292D285D00816889 /* ImagesListCell.swift in Sources */,
 				25E26BC0292CFE3900816889 /* AppDelegate.swift in Sources */,
 				257A83DB2948797A007EA8E8 /* UILabel + Extensions.swift in Sources */,
+				2553F05D2976D69700A1441E /* URLSession + Extension.swift in Sources */,
 				2553F05929758D6300A1441E /* ProfileImageService.swift in Sources */,
 				25E26BC2292CFE3900816889 /* SceneDelegate.swift in Sources */,
 				25149F94295DC0E600713582 /* Constants.swift in Sources */,
