@@ -30,13 +30,13 @@ final class ProfileImageService {
         
         let request = makeRequest(token, username: username)
         let session = urlSession
-        let task = session.objectTask(for: request) { [weak self] (result: Result<ProfileImage, Error>) in
+        let task = session.objectTask(for: request) { [weak self] (result: Result<UserResult, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let image):
-                self.avatarURL = image.small
+                self.avatarURL = image.profileImage?.small
                 print("111", "\(self.avatarURL ?? "")")
-                completion(.success(image.small ?? ""))
+                completion(.success(self.avatarURL ?? ""))
                 NotificationCenter.default
                     .post(
                         name: ProfileImageService.didChangeNotification,

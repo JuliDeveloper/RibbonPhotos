@@ -16,5 +16,7 @@ struct UserResult: Codable {
 }
 
 struct ProfileImage: Codable {
-    let small: String?
+    let small: String
+    let medium: String
+    let large: String
 }
