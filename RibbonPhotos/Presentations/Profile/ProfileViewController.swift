@@ -62,10 +62,10 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupProfileInfo(profileService.profile ?? Profile(
-            username: "11",
-            name: "22",
-            loginName: "33",
-            bio: "44"
+            username: "",
+            name: "",
+            loginName: "",
+            bio: ""
         ))
         addSubviews()
         setupConstraints()

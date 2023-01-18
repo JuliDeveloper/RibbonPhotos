@@ -47,10 +47,9 @@ extension AuthViewController: WebViewViewControllerDelegate {
                 case .success(let accessToken):
                     self.saveAccessToken(accessToken)
                     self.delegate?.didAuthenticate(vc: vc)
-                    //UIBlockingProgressHUD.dismiss()
                 case .failure(let error):
                     print(error)
-                    //UIBlockingProgressHUD.dismiss()
+                    self.showAlert()
                 }
             }
         }
