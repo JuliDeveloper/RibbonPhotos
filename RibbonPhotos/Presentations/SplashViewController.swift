@@ -58,22 +58,18 @@ final class SplashViewController: UIViewController {
     }
     
     private func fetchProfile(token: String) {
-        profileService.fetchProfile(token) { [weak self] result in
-            guard let self = self else { return }
-            
-            DispatchQueue.main.async {
+        profileService.fetchProfile(token) { result in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
                 switch result {
                 case .success(let profile):
-                    self.profileImageService.fetchProfileImageURL(token, username: profile.username ?? "") { _ in
-                        print("AVATAR SUCCESS")
-                        print("\(profile.username ?? "")")
-                    }
-                    print("!!!!!!!! success")
+                    self.profileImageService.fetchProfileImageURL(token, username: profile.username ?? "") { _ in }
                 case .failure:
                     self.showAlert()
                     break
                 }
             }
+            
         }
     }
     
@@ -82,7 +78,6 @@ final class SplashViewController: UIViewController {
         let action = UIAlertAction(title: "OK", style: .default)
         
         alert.addAction(action)
-        
         present(alert, animated: true)
     }
 }

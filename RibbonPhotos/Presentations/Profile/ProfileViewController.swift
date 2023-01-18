@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ProfileViewController: UIViewController {
     
@@ -53,6 +54,8 @@ final class ProfileViewController: UIViewController {
     }()
     
     private let profileService = ProfileService.shared
+    private let profileImageService = ProfileImageService.shared
+
     private var profileImageServiceObserver: NSObjectProtocol?
     
     //MARK: - LifeCycle
@@ -76,11 +79,6 @@ final class ProfileViewController: UIViewController {
                         self.updateAvatar()
                     }
         updateAvatar()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
     }
     
     //MARK: - Helpers
@@ -118,13 +116,32 @@ final class ProfileViewController: UIViewController {
         }
     }
     
-    private func updateAvatar() {                                   // 8
-           guard
-               let profileImageURL = ProfileImageService.shared.avatarURL,
-               let url = URL(string: profileImageURL)
-           else { return }
-           // TODO [Sprint 11] Обновить аватар, используя Kingfisher
-       }
+    private func updateAvatar() {
+        if let profileImageURL = profileImageService.avatarURL,
+           let url = URL(string: profileImageURL) {
+
+            let cache = ImageCache.default
+            cache.clearMemoryCache()
+            cache.clearDiskCache()
+            
+            let processor = RoundCornerImageProcessor(cornerRadius: (profileImageView.image?.size.width ?? 0) / 2)
+            self.profileImageView.kf.indicatorType = .activity
+            self.profileImageView.kf.setImage(
+                with: url,
+                placeholder: UIImage(named: "person.crop.circle.fill"),
+                options: [.processor(processor)]
+            ) { result in
+                switch result {
+                case .success(let value):
+                    print("Аватарка \(value.image) была успешно загружена и заменена в профиле")
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        } else {
+            profileImageView.image = UIImage(named: "person.crop.circle.fill")
+        }
+    }
 
     @objc private func didTapButton() {
         
