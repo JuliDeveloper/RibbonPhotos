@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AuthViewControllerDelegate: AnyObject {
-    func didAuthenticate()
+    func didAuthenticate(vc: WebViewViewController)
 }
 
 fileprivate let showWebViewSegueIdentifier = "ShowWebView"
@@ -46,11 +46,11 @@ extension AuthViewController: WebViewViewControllerDelegate {
                 switch result {
                 case .success(let accessToken):
                     self.saveAccessToken(accessToken)
-                    self.delegate?.didAuthenticate()
-                    UIBlockingProgressHUD.dismiss()
+                    self.delegate?.didAuthenticate(vc: vc)
+                    //UIBlockingProgressHUD.dismiss()
                 case .failure(let error):
                     print(error)
-                    UIBlockingProgressHUD.dismiss()
+                    //UIBlockingProgressHUD.dismiss()
                 }
             }
         }
