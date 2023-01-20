@@ -67,6 +67,7 @@ final class ProfileViewController: UIViewController {
             loginName: "",
             bio: ""
         ))
+        view.backgroundColor = .ypBlack
         addSubviews()
         setupConstraints()
         profileImageServiceObserver = NotificationCenter.default
