@@ -49,7 +49,9 @@ extension AuthViewController: WebViewViewControllerDelegate {
                     self.delegate?.didAuthenticate(vc: vc)
                 case .failure(let error):
                     print(error)
-                    self.showAlert()
+                    self.showAlert { _ in
+                        self.present(self, animated: true)
+                    }
                 }
             }
         }

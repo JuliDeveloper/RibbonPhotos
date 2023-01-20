@@ -75,7 +75,9 @@ final class SplashViewController: UIViewController {
                 case .success(let profile):
                     self.profileImageService.fetchProfileImageURL(token, username: profile.username ?? "") { _ in }
                 case .failure:
-                    self.showAlert()
+                    self.showAlert { _ in
+                        self.prepare()
+                    }
                     break
                 }
             }
