@@ -59,9 +59,8 @@ final class SplashViewController: UIViewController {
     }
     
     private func showUserScenario() {
-        if oauth2TokenStorage.bearerToken != nil {
-            switchToTabBarController()
-            fetchProfile(token: oauth2TokenStorage.bearerToken ?? "")
+        if let token = oauth2TokenStorage.bearerToken {
+            fetchProfile(token: token)
         } else {
             prepare()
         }
@@ -74,6 +73,7 @@ final class SplashViewController: UIViewController {
                 switch result {
                 case .success(let profile):
                     self.profileImageService.fetchProfileImageURL(token, username: profile.username ?? "") { _ in }
+                    self.switchToTabBarController()
                 case .failure:
                     self.showAlert { _ in
                         self.prepare()
