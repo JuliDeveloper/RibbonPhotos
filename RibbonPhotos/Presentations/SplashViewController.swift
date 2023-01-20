@@ -67,21 +67,24 @@ final class SplashViewController: UIViewController {
     }
     
     private func fetchProfile(token: String) {
+        UIBlockingProgressHUD.show()
         profileService.fetchProfile(token) { result in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 switch result {
                 case .success(let profile):
-                    self.profileImageService.fetchProfileImageURL(token, username: profile.username ?? "") { _ in }
+                    self.profileImageService.fetchProfileImageURL(
+                        token, username:
+                            profile.username ?? ""
+                    ) { _ in }
                     self.switchToTabBarController()
+                    UIBlockingProgressHUD.dismiss()
                 case .failure:
                     self.showAlert { _ in
                         self.prepare()
                     }
-                    break
                 }
             }
-            
         }
     }
 }
@@ -90,6 +93,5 @@ final class SplashViewController: UIViewController {
 extension SplashViewController: AuthViewControllerDelegate {
     func didAuthenticate() {
         self.showUserScenario()
-        UIBlockingProgressHUD.dismiss()
     }
 }
