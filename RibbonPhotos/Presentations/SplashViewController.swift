@@ -88,11 +88,8 @@ final class SplashViewController: UIViewController {
 
 //MARK: - AuthViewControllerDelegate
 extension SplashViewController: AuthViewControllerDelegate {
-    func didAuthenticate(vc: WebViewViewController) {
-        UIBlockingProgressHUD.show()
-        vc.dismiss(animated: true) {
-            self.showUserScenario()
-            UIBlockingProgressHUD.dismiss()
-        }
+    func didAuthenticate() {
+        self.showUserScenario()
+        UIBlockingProgressHUD.dismiss()
     }
 }
