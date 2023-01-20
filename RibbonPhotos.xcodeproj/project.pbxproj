@@ -108,8 +108,8 @@
 				25E26BE4292D45FC00816889 /* UIColor + Extensions.swift */,
 				257A83DA2948797A007EA8E8 /* UILabel + Extensions.swift */,
 				2553F05C2976D69700A1441E /* URLSession + Extension.swift */,
-				25149F93295DC0E600713582 /* Constants.swift */,
 				2553F0642978054100A1441E /* UIViewController + Extension.swift */,
+				25149F93295DC0E600713582 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

@@ -54,10 +54,10 @@ final class ProfileService: ProfileServiceProtocol {
                     loginName: "failure",
                     bio: "failure"
                 )))
-                self.task = nil
             case .failure(let error):
                 completion(.failure(error))
             }
+            self.task = nil
         }
         self.task = task
         task.resume()

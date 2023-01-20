@@ -35,7 +35,6 @@ final class ProfileImageService {
             switch result {
             case .success(let image):
                 self.avatarURL = image.profileImage?.small
-                print("111", "\(self.avatarURL ?? "")")
                 completion(.success(self.avatarURL ?? ""))
                 NotificationCenter.default
                     .post(
@@ -46,6 +45,7 @@ final class ProfileImageService {
             case .failure(let error):
                 completion(.failure(error))
             }
+            self.task = nil
         }
         
         self.task = task
