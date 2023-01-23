@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ImagesListCell: UITableViewCell {
     
@@ -26,6 +27,11 @@ final class ImagesListCell: UITableViewCell {
     }()
     
     //MARK: - LifeCycle
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageCell.kf.cancelDownloadTask()
+    }
+    
     override func layoutSublayers(of layer: CALayer) {
         gradient.frame = gradientView.bounds
         gradient.colors = [UIColor.ypBlack.withAlphaComponent(0).cgColor,
@@ -34,12 +40,15 @@ final class ImagesListCell: UITableViewCell {
     }
     
     //MARK: - Helpers
-    func configCell(for cell: ImagesListCell, from photosName: [String], with indexPath: IndexPath) {
-        guard let image = UIImage(named: photosName[indexPath.row]) else {
-            return
-        }
-
-        cell.imageCell.image = image
+    func configCell(for cell: ImagesListCell, from photosName: [Photo], with indexPath: IndexPath) {
+        let imageUrl = photosName[indexPath.row].thumbImageURL
+        let url = URL(string: imageUrl)
+        
+        cell.imageCell.kf.indicatorType = .activity
+        cell.imageCell.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "placeholder_list_photos")
+        )
         cell.dateLabel.text = dateFormatter.string(from: Date())
 
         let isLiked = indexPath.row % 2 == 0
