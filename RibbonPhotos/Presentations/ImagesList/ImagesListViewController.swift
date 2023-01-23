@@ -15,6 +15,8 @@ final class ImagesListViewController: UIViewController {
     private let showSingleImageSegueIdentifier = "ShowSingleImage"
     private var photosName = [String]()
     
+    private let imageListService = ImagesListService.shared
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +57,19 @@ extension ImagesListViewController: UITableViewDataSource {
 
 //MARK: - UITableViewDelegate
 extension ImagesListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == photosName.count {
+            imageListService.fetchPhotosNextPage { result in
+                switch result {
+                case .success(let photos):
+                    print(photos.count)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: showSingleImageSegueIdentifier, sender: indexPath)
     }
