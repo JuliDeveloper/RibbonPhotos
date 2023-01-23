@@ -20,11 +20,10 @@ final class ImagesListService {
     private let token = OAuth2TokenStorage().bearerToken
     
     func fetchPhotosNextPage() {
-        guard task == nil,
-              let lastPage = lastLoadedPage
-        else { return }
+        assert(Thread.isMainThread)
+        task?.cancel()
         
-        let nextPage = lastLoadedPage == nil ? 1 : lastPage + 1
+        let nextPage = lastLoadedPage == nil ? 1 : lastLoadedPage ?? 0 + 1
         
         guard var urlComponents = URLComponents(string: Constants.unsplashGetListPhotos) else { return }
         urlComponents.queryItems = [
