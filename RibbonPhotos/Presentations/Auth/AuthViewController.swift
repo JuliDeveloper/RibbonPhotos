@@ -45,14 +45,13 @@ extension AuthViewController: WebViewViewControllerDelegate {
         oAuth2Service.fetchAuthToken(code) { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
+                UIBlockingProgressHUD.dismiss()
                 switch result {
                 case .success(let accessToken):
                     self.saveAccessToken(accessToken)
                     self.delegate?.didAuthenticate()
-                    UIBlockingProgressHUD.dismiss()
                 case .failure(let error):
                     print(error)
-                    UIBlockingProgressHUD.dismiss()
                     self.showAlert(nil)
                 }
             }
