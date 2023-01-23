@@ -25,6 +25,18 @@ struct PhotoResult: Codable {
         case likedByUser = "liked_by_user"
         case urls
     }
+    
+    func convert() -> Photo {
+        return Photo(
+            id: self.id,
+            size: CGSize(width: self.width, height: self.height),
+            createdAt: DateFormatter().date(from: self.createdAt ?? ""),
+            welcomeDescription: self.description ?? "",
+            thumbImageURL: self.urls?.thumb ?? "",
+            largeImageURL: self.urls?.full ?? "",
+            isLiked: self.likedByUser
+        )
+    }
 }
 
 struct UrlsResult: Codable {

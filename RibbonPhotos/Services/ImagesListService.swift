@@ -17,56 +17,43 @@ final class ImagesListService {
     private let urlSession = URLSession.shared
     private var task: URLSessionTask?
     
-    private func convertFrom(photoResult: PhotoResult) -> Photo {
-        let id = photoResult.id
-        let size = CGSize(width: photoResult.width, height: photoResult.height)
-        let createdAt = DateFormatter().date(from: photoResult.createdAt ?? "")
-        let welcomeDescription = photoResult.description ?? ""
-        let thumbImageURL = photoResult.urls?.thumb
-        let largeImageURL = photoResult.urls?.full
-        let isLiked = photoResult.likedByUser
-        
-        return Photo(
-            id: id,
-            size: size,
-            createdAt: createdAt,
-            welcomeDescription: welcomeDescription,
-            thumbImageURL: thumbImageURL ?? "",
-            largeImageURL: largeImageURL ?? "",
-            isLiked: isLiked
-        )
-    }
+    private let token = OAuth2TokenStorage().bearerToken
     
-    func fetchPhotosNextPage(_ completion: @escaping (Result<[Photo], Error>) -> Void) {
-        assert(Thread.isMainThread)
-        task?.cancel()
+    func fetchPhotosNextPage() {
+        guard task == nil,
+              let lastPage = lastLoadedPage
+        else { return }
         
-        let nextPage = lastLoadedPage == nil
-            ? 1
-            : lastLoadedPage ?? 0 + 1
+        let nextPage = lastLoadedPage == nil ? 1 : lastPage + 1
         
-        guard let url = URL(string: Constants.unsplashGetListPhotos) else { return }
+        guard var urlComponents = URLComponents(string: Constants.unsplashGetListPhotos) else { return }
+        urlComponents.queryItems = [
+            URLQueryItem(name: "page", value: "\(nextPage)")
+        ]
         
-        let request = URLRequest(url: url)
+        guard let url = urlComponents.url,
+              let token = token
+        else { return }
+        
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
         let session = urlSession
-        let task = session.objectTask(for: request) { [weak self] (result: Result<PhotoResult, Error>) in
+        let task = session.objectTask(for: request) { [weak self] (result: Result<[PhotoResult], Error>) in
             guard let self = self else { return }
             
-            switch result {
-            case .success(let photoResult):
-                let currentPhoto = self.convertFrom(photoResult: photoResult)
-                
-                DispatchQueue.main.async {
-                    self.photos.append(currentPhoto)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let responsePhotos):
+                    let currentPhotos = responsePhotos.map { $0.convert() }
+                    self.photos.append(contentsOf: currentPhotos)
+                    NotificationCenter.default.post(
+                        name: ImagesListService.didChangeNotification,
+                        object: self
+                    )
+                case .failure(let error):
+                    print(error)
                 }
-                completion(.success(self.photos))
-                NotificationCenter.default.post(
-                    name: ImagesListService.didChangeNotification,
-                    object: self,
-                    userInfo: ["photos": self.photos]
-                )
-            case .failure(let error):
-                completion(.failure(error))
             }
             self.task = nil
         }
