@@ -41,14 +41,13 @@ final class ImagesListViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        UIBlockingProgressHUD.show()
         if segue.identifier == showSingleImageSegueIdentifier {
-            let vc = segue.destination as? SingleImageViewController
-            guard let indexPath = sender as? IndexPath else { return }
-            let urlImage = photos[indexPath.row].largeImageURL
-            let url = URL(string: urlImage)
-            //vc?.
-            UIBlockingProgressHUD.dismiss()
+            guard let singleVC = segue.destination as? SingleImageViewController,
+                  let indexPath = sender as? IndexPath
+            else { return }
+            let selectedImageUrl = photos[indexPath.row].largeImageURL
+            guard let url = URL(string: selectedImageUrl) else { return }
+            singleVC.imageUrl = url
         } else {
             super.prepare(for: segue, sender: sender)
         }
