@@ -52,8 +52,8 @@ final class ImagesListCell: UITableViewCell {
         )
         cell.dateLabel.text = dateFormatter.string(from: photos[indexPath.row].createdAt ?? Date())
 
-        let isLiked = indexPath.row % 2 == 0
-        let likeImage = isLiked ? UIImage(named: "buttonNoActive") : UIImage(named: "buttonActive")
+        let isLiked = photos[indexPath.row].isLiked
+        let likeImage = isLiked ? UIImage(named: "buttonActive") : UIImage(named: "buttonNoActive")
         cell.likeButton.setImage(likeImage, for: .normal)
     }
 }
