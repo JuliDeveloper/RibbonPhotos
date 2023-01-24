@@ -43,3 +43,5 @@ struct UrlsResult: Codable {
     let full: String?
     let thumb: String?
 }
+
+struct PhotoLikeResult: Codable {}
