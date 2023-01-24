@@ -30,7 +30,7 @@ struct PhotoResult: Codable {
         return Photo(
             id: self.id,
             size: CGSize(width: self.width, height: self.height),
-            createdAt: DateFormatter().date(from: self.createdAt ?? ""),
+            createdAt: Date().convertStringToDate(self.createdAt ?? ""),
             welcomeDescription: self.description ?? "",
             thumbImageURL: self.urls?.thumb ?? "",
             largeImageURL: self.urls?.full ?? "",

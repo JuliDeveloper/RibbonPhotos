@@ -23,6 +23,7 @@ final class ImagesListCell: UITableViewCell {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.timeStyle = .none
+        formatter.locale = Locale(identifier: "ru_ru")
         return formatter
     }()
     
@@ -40,8 +41,8 @@ final class ImagesListCell: UITableViewCell {
     }
     
     //MARK: - Helpers
-    func configCell(for cell: ImagesListCell, from photosName: [Photo], with indexPath: IndexPath) {
-        let imageUrl = photosName[indexPath.row].thumbImageURL
+    func configCell(for cell: ImagesListCell, from photos: [Photo], with indexPath: IndexPath) {
+        let imageUrl = photos[indexPath.row].thumbImageURL
         let url = URL(string: imageUrl)
         
         cell.imageCell.kf.indicatorType = .activity
@@ -49,7 +50,7 @@ final class ImagesListCell: UITableViewCell {
             with: url,
             placeholder: UIImage(named: "placeholder_list_photos")
         )
-        cell.dateLabel.text = dateFormatter.string(from: Date())
+        cell.dateLabel.text = dateFormatter.string(from: photos[indexPath.row].createdAt ?? Date())
 
         let isLiked = indexPath.row % 2 == 0
         let likeImage = isLiked ? UIImage(named: "buttonNoActive") : UIImage(named: "buttonActive")
