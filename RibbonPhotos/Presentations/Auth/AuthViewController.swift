@@ -52,7 +52,11 @@ extension AuthViewController: WebViewViewControllerDelegate {
                     self.delegate?.didAuthenticate()
                 case .failure(let error):
                     print(error)
-                    self.showAlert(nil)
+                    self.showSingleAlert(
+                        title: "Что-то пошло не так(",
+                        message: "Не удалось войти в систему",
+                        nil
+                    )
                 }
             }
         }

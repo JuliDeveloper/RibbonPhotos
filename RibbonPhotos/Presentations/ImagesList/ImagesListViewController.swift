@@ -115,7 +115,10 @@ extension ImagesListViewController: ImagesListCellDelegate {
                     cell.setIsLiked(self.photos[indexPath.row].isLiked)
                 case .failure(let error):
                     print(error)
-                    self.showAlert { _ in
+                    self.showSingleAlert(
+                        title: "Что-то пошло не так(",
+                        message: "Не удалось войти в систему"
+                    ) { _ in
                         self.dismiss(animated: true)
                     }
                 }
