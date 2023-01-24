@@ -65,7 +65,7 @@ final class ImagesListService {
         assert(Thread.isMainThread)
         task?.cancel()
         
-        guard let url = URL(string: Constants.unsplashGetListPhotos + photoId + "/like"),
+        guard let url = URL(string: "\(Constants.unsplashGetListPhotos)/\(photoId)/like"),
               let token = token
         else { return }
         
@@ -81,17 +81,15 @@ final class ImagesListService {
                 guard let index = self.photos.firstIndex(where: { $0.id == photoId }) else { return }
                 let photo = self.photos[index]
                 let newPhoto = Photo(
-                            id: photo.id,
-                            size: photo.size,
-                            createdAt: photo.createdAt,
-                            welcomeDescription: photo.welcomeDescription,
-                            thumbImageURL: photo.thumbImageURL,
-                            largeImageURL: photo.largeImageURL,
-                            isLiked: !photo.isLiked
-                        )
-                DispatchQueue.main.async {
-                    self.photos.insert(newPhoto, at: index)
-                }
+                    id: photo.id,
+                    size: photo.size,
+                    createdAt: photo.createdAt,
+                    welcomeDescription: photo.welcomeDescription,
+                    thumbImageURL: photo.thumbImageURL,
+                    largeImageURL: photo.largeImageURL,
+                    isLiked: !photo.isLiked
+                )
+                self.photos.insert(newPhoto, at: index)
                 completion(.success(()))
             case .failure(let error):
                 completion(.failure(error))

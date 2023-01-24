@@ -8,6 +8,10 @@
 import UIKit
 import Kingfisher
 
+protocol ImagesListCellDelegate: AnyObject {
+    func imageListCellDidTapLike(_ cell: ImagesListCell)
+}
+
 final class ImagesListCell: UITableViewCell {
     
     //MARK: - Properties
@@ -27,6 +31,9 @@ final class ImagesListCell: UITableViewCell {
         return formatter
     }()
     
+    private let imageListService = ImagesListService.shared
+    weak var delegate: ImagesListCellDelegate?
+    
     //MARK: - LifeCycle
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -41,6 +48,10 @@ final class ImagesListCell: UITableViewCell {
     }
     
     //MARK: - Helpers
+    @IBAction private func likeButtonClicked() {
+        delegate?.imageListCellDidTapLike(self)
+    }
+    
     func configCell(for cell: ImagesListCell, from photos: [Photo], with indexPath: IndexPath) {
         let imageUrl = photos[indexPath.row].thumbImageURL
         let url = URL(string: imageUrl)
@@ -51,9 +62,11 @@ final class ImagesListCell: UITableViewCell {
             placeholder: UIImage(named: "placeholder_list_photos")
         )
         cell.dateLabel.text = dateFormatter.string(from: photos[indexPath.row].createdAt ?? Date())
-
-        let isLiked = photos[indexPath.row].isLiked
-        let likeImage = isLiked ? UIImage(named: "buttonActive") : UIImage(named: "buttonNoActive")
-        cell.likeButton.setImage(likeImage, for: .normal)
+        cell.setIsLiked(photos[indexPath.row].isLiked)
+    }
+    
+    func setIsLiked(_ state: Bool) {
+        let likeImage = state ? UIImage(named: "buttonActive") : UIImage(named: "buttonNoActive")
+        likeButton.setImage(likeImage, for: .normal)
     }
 }

@@ -80,7 +80,7 @@ extension ImagesListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ImagesListCell.reuseIdentifier, for: indexPath)
         
         guard let imageListCell = cell as? ImagesListCell else { return UITableViewCell() }
-        
+        imageListCell.delegate = self
         imageListCell.configCell(for: imageListCell, from: photos, with: indexPath)
         tableView.reloadRows(at: [indexPath], with: .automatic)
         
@@ -98,5 +98,29 @@ extension ImagesListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: showSingleImageSegueIdentifier, sender: indexPath)
+    }
+}
+
+extension ImagesListViewController: ImagesListCellDelegate {
+    func imageListCellDidTapLike(_ cell: ImagesListCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let photo = photos[indexPath.row]
+        UIBlockingProgressHUD.show()
+        imageListService.changeLike(photoId: photo.id, isLike: !photo.isLiked) { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    self.photos = self.imageListService.photos
+                    cell.setIsLiked(self.photos[indexPath.row].isLiked)
+                case .failure(let error):
+                    print(error)
+                    self.showAlert { _ in
+                        self.dismiss(animated: true)
+                    }
+                }
+            }
+            UIBlockingProgressHUD.dismiss()
+        }
     }
 }
