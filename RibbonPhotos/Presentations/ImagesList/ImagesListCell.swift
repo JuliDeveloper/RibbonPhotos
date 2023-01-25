@@ -61,7 +61,14 @@ final class ImagesListCell: UITableViewCell {
             with: url,
             placeholder: UIImage(named: "placeholder_list_photos")
         )
-        cell.dateLabel.text = dateFormatter.string(from: photos[indexPath.row].createdAt ?? Date())
+        
+        if photos[indexPath.row].createdAt != nil {
+            guard let date = photos[indexPath.row].createdAt else { return }
+            cell.dateLabel.text = dateFormatter.string(from: date)
+        } else {
+            cell.dateLabel.text = ""
+        }
+        
         cell.setIsLiked(photos[indexPath.row].isLiked)
     }
     
