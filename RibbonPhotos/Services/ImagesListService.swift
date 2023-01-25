@@ -20,8 +20,7 @@ final class ImagesListService {
     private let token = OAuth2TokenStorage().bearerToken
     
     func fetchPhotosNextPage() {
-        assert(Thread.isMainThread)
-        task?.cancel()
+        if task != nil { return }
         
         let nextPage = lastLoadedPage == nil ? 1 : lastLoadedPage ?? 0 + 1
         
@@ -38,7 +37,7 @@ final class ImagesListService {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         let session = urlSession
-        let task = session.objectTask(for: request) { [weak self] (result: Result<[PhotoResult], Error>) in
+        session.objectTask(for: request) { [weak self] (result: Result<[PhotoResult], Error>) in
             guard let self = self else { return }
             
             DispatchQueue.main.async {
@@ -55,15 +54,11 @@ final class ImagesListService {
                 }
             }
             self.task = nil
-        }
-        
-        self.task = task
-        task.resume()
+        }.resume()
     }
     
     func changeLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void, Error>) -> Void) {
-        assert(Thread.isMainThread)
-        task?.cancel()
+        if task != nil { return }
         
         guard let url = URL(string: "\(Constants.unsplashGetListPhotos)/\(photoId)/like"),
               let token = token
@@ -74,7 +69,7 @@ final class ImagesListService {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         let session = urlSession
-        let task = session.objectTask(for: request) { [weak self] (result: Result<PhotoLikeResult, Error>) in
+        session.objectTask(for: request) { [weak self] (result: Result<PhotoLikeResult, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(_):
@@ -95,8 +90,6 @@ final class ImagesListService {
                 completion(.failure(error))
             }
             self.task = nil
-        }
-        self.task = task
-        task.resume()
+        }.resume()
     }
 }
