@@ -80,6 +80,7 @@ final class SplashViewController: UIViewController {
                     self.switchToTabBarController()
                     UIBlockingProgressHUD.dismiss()
                 case .failure:
+                    UIBlockingProgressHUD.dismiss()
                     self.showSingleAlert(
                         title: "Что-то пошло не так(",
                         message: "Не удалось войти в систему"
