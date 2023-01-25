@@ -40,7 +40,8 @@ final class SingleImageViewController: UIViewController {
     }
     
     //MARK: - Helpers
-    private func fetchImage() {
+    private func setupImage() {
+        UIBlockingProgressHUD.show()
         imageView.kf.setImage(with: imageUrl) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -51,11 +52,6 @@ final class SingleImageViewController: UIViewController {
             }
             UIBlockingProgressHUD.dismiss()
         }
-    }
-    
-    private func setupImage() {
-        UIBlockingProgressHUD.show()
-        fetchImage()
     }
     
     private func rescaleAndCenterImageInScrollView(image: UIImage) {
@@ -79,10 +75,15 @@ final class SingleImageViewController: UIViewController {
         showDoubleAlert(
             title: "Что-то пошло не так.",
             message: "Попробовать ещё раз?",
-            cancelAction: "Не надо",
-            repeatAction: "Повторить"
-        ) { [weak self] _ in
-            self?.fetchImage()
+            firstAction: "Не надо",
+            secondAction: "Повторить"
+        ) { [weak self] action in
+            guard let self = self else { return }
+            if action.title == "Повторить" {
+                self.setupImage()
+            } else {
+                self.dismiss(animated: true)
+            }
         }
     }
 }
