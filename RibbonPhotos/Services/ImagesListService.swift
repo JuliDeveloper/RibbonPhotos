@@ -81,16 +81,7 @@ final class ImagesListService {
             case .success(_):
                 guard let index = self.photos.firstIndex(where: { $0.id == photoId }) else { return }
                 let photo = self.photos[index]
-                let newPhoto = Photo(
-                    id: photo.id,
-                    size: photo.size,
-                    createdAt: photo.createdAt,
-                    welcomeDescription: photo.welcomeDescription,
-                    thumbImageURL: photo.thumbImageURL,
-                    largeImageURL: photo.largeImageURL,
-                    isLiked: !photo.isLiked
-                )
-                self.photos.insert(newPhoto, at: index)
+                self.photos[index].isLiked = !photo.isLiked
                 completion(.success(()))
             case .failure(let error):
                 completion(.failure(error))
