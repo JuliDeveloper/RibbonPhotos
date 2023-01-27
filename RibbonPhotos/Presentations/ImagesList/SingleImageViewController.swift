@@ -81,8 +81,6 @@ final class SingleImageViewController: UIViewController {
             guard let self = self else { return }
             if action.title == "Повторить" {
                 self.setupImage()
-            } else {
-                self.dismiss(animated: true)
             }
         }
     }

@@ -117,13 +117,12 @@ extension ImagesListViewController: ImagesListCellDelegate {
                     print(error)
                     self.showSingleAlert(
                         title: "Что-то пошло не так(",
-                        message: "Не удалось войти в систему"
-                    ) { _ in
-                        self.dismiss(animated: true)
-                    }
+                        message: "Попробуйте ещё раз",
+                        nil
+                    )
                 }
+                UIBlockingProgressHUD.dismiss()
             }
-            UIBlockingProgressHUD.dismiss()
         }
     }
 }

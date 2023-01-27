@@ -83,7 +83,7 @@ final class SplashViewController: UIViewController {
                     UIBlockingProgressHUD.dismiss()
                     self.showSingleAlert(
                         title: "Что-то пошло не так(",
-                        message: "Не удалось войти в систему"
+                        message: "Попробуйте ещё раз"
                     ) { _ in
                         self.prepare()
                     }

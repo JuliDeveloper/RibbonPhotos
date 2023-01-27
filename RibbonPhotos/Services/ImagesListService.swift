@@ -11,7 +11,7 @@ final class ImagesListService {
     static let shared = ImagesListService()
     static let didChangeNotification = Notification.Name(rawValue: "ImagesListServiceDidChange")
     
-    private (set) var photos: [Photo] = []
+    private(set) var photos: [Photo] = []
     private var lastLoadedPage: Int?
     
     private let urlSession = URLSession.shared
@@ -22,7 +22,12 @@ final class ImagesListService {
     func fetchPhotosNextPage() {
         if task != nil { return }
         
-        let nextPage = lastLoadedPage == nil ? 1 : lastLoadedPage ?? 0 + 1
+        let nextPage: Int
+        if let lastLoadedPage {
+            nextPage = lastLoadedPage + 1
+        } else {
+            nextPage = 1
+        }
         
         guard var urlComponents = URLComponents(string: Constants.unsplashGetListPhotos) else { return }
         urlComponents.queryItems = [
@@ -43,6 +48,7 @@ final class ImagesListService {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let responsePhotos):
+                    self.lastLoadedPage = (self.lastLoadedPage ?? 0) + 1
                     let currentPhotos = responsePhotos.map { $0.convert() }
                     self.photos.append(contentsOf: currentPhotos)
                     NotificationCenter.default.post(

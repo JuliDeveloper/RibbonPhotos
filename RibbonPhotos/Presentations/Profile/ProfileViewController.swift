@@ -166,8 +166,6 @@ final class ProfileViewController: UIViewController {
             guard let self = self else { return }
             if action.title == "Да" {
                 self.logoutFromProfile()
-            } else {
-                self.dismiss(animated: true)
             }
         }
     }
