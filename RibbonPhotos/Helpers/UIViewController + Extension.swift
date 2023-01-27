@@ -16,10 +16,10 @@ extension UIViewController {
         present(alert, animated: true)
     }
     
-    func showDoubleAlert(title: String, message: String, firstAction: String, secondAction: String, _ completion: ((UIAlertAction) -> (Void))?) {
+    func showDoubleAlert(title: String, message: String, firstAction: String, secondAction: String, _ firstCompletion: ((UIAlertAction) -> (Void))?, _ secondCompletion: ((UIAlertAction) -> (Void))?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let first = UIAlertAction(title: firstAction, style: .default, handler: completion)
-        let second = UIAlertAction(title: secondAction, style: .default, handler: completion)
+        let first = UIAlertAction(title: firstAction, style: .default, handler: firstCompletion)
+        let second = UIAlertAction(title: secondAction, style: .default, handler: secondCompletion)
         
         alert.addAction(first)
         alert.addAction(second)

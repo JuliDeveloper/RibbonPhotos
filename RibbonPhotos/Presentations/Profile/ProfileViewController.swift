@@ -162,11 +162,9 @@ final class ProfileViewController: UIViewController {
             message: "Уверены что хотите выйти?",
             firstAction: "Да",
             secondAction: "Нет"
-        ) { [weak self] action in
+        ) { [weak self] _ in
             guard let self = self else { return }
-            if action.title == "Да" {
-                self.logoutFromProfile()
-            }
-        }
+            self.logoutFromProfile()
+        } _: { _ in }
     }
 }

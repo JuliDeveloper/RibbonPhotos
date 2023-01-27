@@ -77,11 +77,9 @@ final class SingleImageViewController: UIViewController {
             message: "Попробовать ещё раз?",
             firstAction: "Не надо",
             secondAction: "Повторить"
-        ) { [weak self] action in
+        ) { _ in } _: { [weak self] _ in
             guard let self = self else { return }
-            if action.title == "Повторить" {
-                self.setupImage()
-            }
+            self.setupImage()
         }
     }
 }
