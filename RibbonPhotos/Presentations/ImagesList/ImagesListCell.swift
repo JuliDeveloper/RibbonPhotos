@@ -23,13 +23,6 @@ final class ImagesListCell: UITableViewCell {
     static let reuseIdentifier = "ImagesListCell"
     
     private let gradient = CAGradientLayer()
-    private lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        formatter.timeStyle = .none
-        formatter.locale = Locale(identifier: "ru_ru")
-        return formatter
-    }()
     
     private let imageListService = ImagesListService.shared
     weak var delegate: ImagesListCellDelegate?
@@ -63,8 +56,8 @@ final class ImagesListCell: UITableViewCell {
         )
         
         if photos[indexPath.row].createdAt != nil {
-            guard let date = photos[indexPath.row].createdAt else { return }
-            cell.dateLabel.text = dateFormatter.string(from: date)
+            let photo = photos[indexPath.row]
+            cell.dateLabel.text = photo.createdAt?.dateTimeString
         } else {
             cell.dateLabel.text = ""
         }

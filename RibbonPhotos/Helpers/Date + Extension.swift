@@ -7,11 +7,19 @@
 
 import Foundation
 
-extension Date {    
+private let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .long
+    formatter.timeStyle = .none
+    formatter.locale = Locale(identifier: "ru_ru")
+    return formatter
+}()
+
+extension Date {
+    var dateTimeString: String { dateFormatter.string(from: self) }
+    
     func convertStringToDate(_ string: String) -> Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let dateFormatter =  ISO8601DateFormatter()
         let date = dateFormatter.date(from: string)
         return date
     }
