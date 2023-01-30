@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		25149F94295DC0E600713582 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25149F93295DC0E600713582 /* Constants.swift */; };
+		253E0D212986CB3E002C1C43 /* Gradient + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253E0D202986CB3E002C1C43 /* Gradient + Extension.swift */; };
 		25538FF7297EA16D0033FB9A /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25538FF6297EA16D0033FB9A /* ImagesListService.swift */; };
 		25538FF9297EA1CC0033FB9A /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25538FF8297EA1CC0033FB9A /* Photo.swift */; };
 		25538FFB297EA5660033FB9A /* PhotoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25538FFA297EA5660033FB9A /* PhotoResult.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		25149F93295DC0E600713582 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		253E0D202986CB3E002C1C43 /* Gradient + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient + Extension.swift"; sourceTree = "<group>"; };
 		25538FF6297EA16D0033FB9A /* ImagesListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
 		25538FF8297EA1CC0033FB9A /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		25538FFA297EA5660033FB9A /* PhotoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResult.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				2553F0642978054100A1441E /* UIViewController + Extension.swift */,
 				25149F93295DC0E600713582 /* Constants.swift */,
 				25539009297FD95A0033FB9A /* Date + Extension.swift */,
+				253E0D202986CB3E002C1C43 /* Gradient + Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				25B98C60296AE38800F17C0B /* OAuth2Service.swift in Sources */,
 				25538FFB297EA5660033FB9A /* PhotoResult.swift in Sources */,
 				25538FF9297EA1CC0033FB9A /* Photo.swift in Sources */,
+				253E0D212986CB3E002C1C43 /* Gradient + Extension.swift in Sources */,
 				2553F0512971B71100A1441E /* UIBlockingProgressHUD.swift in Sources */,
 				2553F05B29758DE700A1441E /* UserResult.swift in Sources */,
 				25BD7DA5296851E9009B7DC4 /* AuthViewController.swift in Sources */,
