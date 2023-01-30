@@ -49,11 +49,13 @@ final class ImagesListCell: UITableViewCell {
         let imageUrl = photos[indexPath.row].thumbImageURL
         let url = URL(string: imageUrl)
         
-        cell.imageCell.kf.indicatorType = .activity
+        showGradientAnimation(for: cell)
+        
         cell.imageCell.kf.setImage(
             with: url,
-            placeholder: UIImage(named: "placeholder_list_photos")
-        )
+            placeholder: UIImage(named: "placeholder_list_photos")) { [weak self] _ in
+                self?.imageCell.layer.sublayers?.removeAll()
+            }
         
         if photos[indexPath.row].createdAt != nil {
             let photo = photos[indexPath.row]
@@ -68,5 +70,14 @@ final class ImagesListCell: UITableViewCell {
     func setIsLiked(_ state: Bool) {
         let likeImage = state ? UIImage(named: "buttonActive") : UIImage(named: "buttonNoActive")
         likeButton.setImage(likeImage, for: .normal)
+    }
+    
+    private func showGradientAnimation(for cell: ImagesListCell) {
+        let gradientAnimation = CAGradientLayer().createLoadingGradient(
+            UIScreen.main.bounds.width - 32,
+            UIImage(named: "placeholder_list_photos")?.size.height ?? 252,
+            16
+        )
+        cell.imageCell.layer.addSublayer(gradientAnimation)
     }
 }
