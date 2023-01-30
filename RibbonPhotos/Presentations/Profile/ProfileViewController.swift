@@ -13,7 +13,6 @@ final class ProfileViewController: UIViewController {
     //MARK: - Properties
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "profile_photo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -21,18 +20,20 @@ final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.config(
             for: label,
-            text: "Екатерина Новикова",
+            text: "",
             fontSize: 23,
             textColor: .ypWhite)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     private lazy var usernameLabel: UILabel = {
         let label = UILabel()
         label.config(
             for: label,
-            text: "@ekaterina_nov",
+            text: "",
             fontSize: 13,
             textColor: .ypGray)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     private lazy var statusLabel: UILabel = {
@@ -42,6 +43,7 @@ final class ProfileViewController: UIViewController {
             text: "Hello, world!",
             fontSize: 13,
             textColor: .ypWhite)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     private lazy var logoutButton: UIButton = {
@@ -62,6 +64,7 @@ final class ProfileViewController: UIViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        showGradientAnimation()
         setupProfileInfo(profileService.profile ?? Profile(
             username: "",
             name: "",
@@ -109,9 +112,28 @@ final class ProfileViewController: UIViewController {
         ])
     }
     
+    private func showGradientAnimation() {
+        let imageGradient = CAGradientLayer().createLoadingGradient(70, 70, 35)
+        let nameLabelGradient = CAGradientLayer().createLoadingGradient(223, 18, 9)
+        let usernameLabelGradient = CAGradientLayer().createLoadingGradient(69, 18, 9)
+        let statusLabelGradient = CAGradientLayer().createLoadingGradient(67, 18, 9)
+
+        profileImageView.layer.addSublayer(imageGradient)
+        nameLabel.layer.addSublayer(nameLabelGradient)
+        usernameLabel.layer.addSublayer(usernameLabelGradient)
+        statusLabel.layer.addSublayer(statusLabelGradient)
+    }
+    
+    private func removeGradientAnimation(_ views: [UIView]) {
+        for view in views {
+            view.layer.sublayers?.removeAll()
+        }
+    }
+    
     private func setupProfileInfo(_ profile: Profile) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
+            self.removeGradientAnimation([self.nameLabel, self.usernameLabel, self.statusLabel])
             self.nameLabel.text = profile.name
             self.usernameLabel.text = profile.loginName
             self.statusLabel.text = profile.bio
@@ -126,22 +148,18 @@ final class ProfileViewController: UIViewController {
             cache.clearMemoryCache()
             cache.clearDiskCache()
             
-            let processor = RoundCornerImageProcessor(cornerRadius: (profileImageView.image?.size.width ?? 0) / 2)
-            self.profileImageView.kf.indicatorType = .activity
+            let processor = RoundCornerImageProcessor(cornerRadius: (35))
             self.profileImageView.kf.setImage(
                 with: url,
                 placeholder: UIImage(named: "person.crop.circle.fill"),
                 options: [.processor(processor)]
-            ) { result in
-                switch result {
-                case .success(let value):
-                    print("Аватарка \(value.image) была успешно загружена и заменена в профиле")
-                case .failure(let error):
-                    print(error)
-                }
+            ) { [weak self] result in
+                guard let self = self else { return }
+                self.removeGradientAnimation([self.profileImageView])
             }
         } else {
             profileImageView.image = UIImage(named: "person.crop.circle.fill")
+            self.removeGradientAnimation([self.profileImageView])
         }
     }
     
