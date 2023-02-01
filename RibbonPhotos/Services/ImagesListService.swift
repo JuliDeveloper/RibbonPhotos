@@ -48,7 +48,7 @@ final class ImagesListService {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let responsePhotos):
-                    self.lastLoadedPage = (self.lastLoadedPage ?? 0) + 1
+                    self.lastLoadedPage = nextPage
                     let currentPhotos = responsePhotos.map { $0.convert() }
                     self.photos.append(contentsOf: currentPhotos)
                     NotificationCenter.default.post(
