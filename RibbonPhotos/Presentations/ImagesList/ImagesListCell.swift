@@ -74,9 +74,9 @@ final class ImagesListCell: UITableViewCell {
     
     private func showGradientAnimation(for cell: ImagesListCell) {
         let gradientAnimation = CAGradientLayer().createLoadingGradient(
-            UIScreen.main.bounds.width - 32,
-            UIImage(named: "placeholder_list_photos")?.size.height ?? 252,
-            16
+            width: UIScreen.main.bounds.width - 32,
+            height: UIImage(named: "placeholder_list_photos")?.size.height ?? 252,
+            radius: 16
         )
         cell.imageCell.layer.addSublayer(gradientAnimation)
     }

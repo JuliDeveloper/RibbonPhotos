@@ -113,10 +113,18 @@ final class ProfileViewController: UIViewController {
     }
     
     private func showGradientAnimation() {
-        let imageGradient = CAGradientLayer().createLoadingGradient(70, 70, 35)
-        let nameLabelGradient = CAGradientLayer().createLoadingGradient(223, 18, 9)
-        let usernameLabelGradient = CAGradientLayer().createLoadingGradient(69, 18, 9)
-        let statusLabelGradient = CAGradientLayer().createLoadingGradient(67, 18, 9)
+        let imageGradient = CAGradientLayer().createLoadingGradient(
+            width: 70, height: 70, radius: 35
+        )
+        let nameLabelGradient = CAGradientLayer().createLoadingGradient(
+            width: 223, height: 18, radius: 9
+        )
+        let usernameLabelGradient = CAGradientLayer().createLoadingGradient(
+            width: 69, height: 18, radius: 9
+        )
+        let statusLabelGradient = CAGradientLayer().createLoadingGradient(
+            width: 67, height: 18, radius: 9
+        )
 
         profileImageView.layer.addSublayer(imageGradient)
         nameLabel.layer.addSublayer(nameLabelGradient)

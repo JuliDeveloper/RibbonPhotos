@@ -8,7 +8,7 @@
 import UIKit
 
 extension CAGradientLayer {
-    func createLoadingGradient(_ width: CGFloat, _ height: CGFloat, _ radius: CGFloat) -> CAGradientLayer {
+    func createLoadingGradient(width: CGFloat, height: CGFloat, radius: CGFloat) -> CAGradientLayer {
         let gradient = CAGradientLayer()
         gradient.frame = CGRect(origin: .zero, size: CGSize(width: width, height: height))
         gradient.locations = [0, 0.1, 0.3]
