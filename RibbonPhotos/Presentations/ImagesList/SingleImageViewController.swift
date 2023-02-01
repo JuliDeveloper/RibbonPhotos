@@ -6,16 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class SingleImageViewController: UIViewController {
     
     //MARK: - Properties
-    var image: UIImage! {
+    var imageUrl: URL! {
         didSet {
             guard isViewLoaded else { return }
-            imageView.image = image
-            
-            rescaleAndCenterImageInScrollView(image: imageView.image ?? UIImage())
         }
     }
     
@@ -25,10 +23,7 @@ final class SingleImageViewController: UIViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = image
-        
-        rescaleAndCenterImageInScrollView(image: imageView.image ?? UIImage())
-        
+        setupImage()
         scrollView.minimumZoomScale = 1
         scrollView.maximumZoomScale = 1.25
     }
@@ -39,12 +34,26 @@ final class SingleImageViewController: UIViewController {
     }
     
     @IBAction private func didTapShareButton(_ sender: UIButton) {
-        let activityVC = UIActivityViewController(activityItems: [image ?? UIImage()], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: [imageView.image ?? UIImage()], applicationActivities: nil)
         activityVC.overrideUserInterfaceStyle = .dark
         present(activityVC, animated: true)
     }
     
     //MARK: - Helpers
+    private func setupImage() {
+        UIBlockingProgressHUD.show()
+        imageView.kf.setImage(with: imageUrl) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let imageResult):
+                self.rescaleAndCenterImageInScrollView(image: imageResult.image)
+            case .failure:
+                self.showError()
+            }
+            UIBlockingProgressHUD.dismiss()
+        }
+    }
+    
     private func rescaleAndCenterImageInScrollView(image: UIImage) {
         let minZoomScale = scrollView.minimumZoomScale
         let maxZoomScale = scrollView.maximumZoomScale
@@ -60,6 +69,18 @@ final class SingleImageViewController: UIViewController {
         let x = (newContentSize.width - visibleRectSize.width) / 2
         let y = (newContentSize.height - visibleRectSize.height) / 2
         scrollView.setContentOffset(CGPoint(x: x, y: y), animated: false)
+    }
+    
+    private func showError() {
+        showDoubleAlert(
+            title: "Что-то пошло не так.",
+            message: "Попробовать ещё раз?",
+            firstAction: "Не надо",
+            secondAction: "Повторить"
+        ) { _ in } _: { [weak self] _ in
+            guard let self = self else { return }
+            self.setupImage()
+        }
     }
 }
 
