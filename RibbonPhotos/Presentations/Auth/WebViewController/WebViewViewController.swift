@@ -11,6 +11,7 @@ import WebKit
 
 public protocol WebViewViewControllerProtocol: AnyObject {
     var presenter: WebViewPresenterProtocol? { get set }
+    func load(request: URLRequest)
 }
 
 protocol WebViewViewControllerDelegate: AnyObject {
@@ -32,7 +33,7 @@ final class WebViewViewController: UIViewController, WebViewViewControllerProtoc
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.navigationDelegate = self
-        fetchRequest()
+        presenter?.viewDidLoad()
         
         estimatedProgressObservation = webView.observe(
             \.estimatedProgress,
@@ -49,18 +50,7 @@ final class WebViewViewController: UIViewController, WebViewViewControllerProtoc
         delegate?.webViewViewControllerDidCancel(self)
     }
     
-    private func fetchRequest() {
-        guard var urlComponents = URLComponents(string: Constants.unsplashAuthorizeURLString) else { return }
-        urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: Constants.accessKey),
-            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
-            URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: Constants.accessScope)
-        ]
-        
-        guard let url = urlComponents.url else { return }
-
-        let request = URLRequest(url: url)
+    func load(request: URLRequest) {
         webView.load(request)
     }
     
