@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		25149F94295DC0E600713582 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25149F93295DC0E600713582 /* Constants.swift */; };
 		253E0D212986CB3E002C1C43 /* Gradient + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253E0D202986CB3E002C1C43 /* Gradient + Extension.swift */; };
+		253F87FD298D442900750194 /* WebViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253F87FC298D442900750194 /* WebViewPresenter.swift */; };
 		25538FF7297EA16D0033FB9A /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25538FF6297EA16D0033FB9A /* ImagesListService.swift */; };
 		25538FF9297EA1CC0033FB9A /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25538FF8297EA1CC0033FB9A /* Photo.swift */; };
 		25538FFB297EA5660033FB9A /* PhotoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25538FFA297EA5660033FB9A /* PhotoResult.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		25149F93295DC0E600713582 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		253E0D202986CB3E002C1C43 /* Gradient + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient + Extension.swift"; sourceTree = "<group>"; };
+		253F87FC298D442900750194 /* WebViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPresenter.swift; sourceTree = "<group>"; };
 		25538FF6297EA16D0033FB9A /* ImagesListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
 		25538FF8297EA1CC0033FB9A /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		25538FFA297EA5660033FB9A /* PhotoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResult.swift; sourceTree = "<group>"; };
@@ -146,6 +148,15 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		253F87FB298D439500750194 /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				25BD7DA729685617009B7DC4 /* WebViewViewController.swift */,
+				253F87FC298D442900750194 /* WebViewPresenter.swift */,
+			);
+			path = WebViewController;
+			sourceTree = "<group>";
+		};
 		25B98C5A29686A6700F17C0B /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				25BD7DA4296851E9009B7DC4 /* AuthViewController.swift */,
-				25BD7DA729685617009B7DC4 /* WebViewViewController.swift */,
+				253F87FB298D439500750194 /* WebViewController */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -330,6 +341,7 @@
 				25538FF9297EA1CC0033FB9A /* Photo.swift in Sources */,
 				253E0D212986CB3E002C1C43 /* Gradient + Extension.swift in Sources */,
 				2553F0512971B71100A1441E /* UIBlockingProgressHUD.swift in Sources */,
+				253F87FD298D442900750194 /* WebViewPresenter.swift in Sources */,
 				2553F05B29758DE700A1441E /* UserResult.swift in Sources */,
 				25BD7DA5296851E9009B7DC4 /* AuthViewController.swift in Sources */,
 				25B98C5E296AE2E300F17C0B /* OAuthTokenResponseBody.swift in Sources */,
