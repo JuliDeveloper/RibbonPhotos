@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		25149F94295DC0E600713582 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25149F93295DC0E600713582 /* Constants.swift */; };
+		25149F94295DC0E600713582 /* AuthConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25149F93295DC0E600713582 /* AuthConfiguration.swift */; };
 		253E0D212986CB3E002C1C43 /* Gradient + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253E0D202986CB3E002C1C43 /* Gradient + Extension.swift */; };
 		253F87FD298D442900750194 /* WebViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253F87FC298D442900750194 /* WebViewPresenter.swift */; };
 		25538FF7297EA16D0033FB9A /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25538FF6297EA16D0033FB9A /* ImagesListService.swift */; };
@@ -48,7 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		25149F93295DC0E600713582 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		25149F93295DC0E600713582 /* AuthConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthConfiguration.swift; sourceTree = "<group>"; };
 		253E0D202986CB3E002C1C43 /* Gradient + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient + Extension.swift"; sourceTree = "<group>"; };
 		253F87FC298D442900750194 /* WebViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPresenter.swift; sourceTree = "<group>"; };
 		25538FF6297EA16D0033FB9A /* ImagesListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 				257A83DA2948797A007EA8E8 /* UILabel + Extensions.swift */,
 				2553F05C2976D69700A1441E /* URLSession + Extension.swift */,
 				2553F0642978054100A1441E /* UIViewController + Extension.swift */,
-				25149F93295DC0E600713582 /* Constants.swift */,
+				25149F93295DC0E600713582 /* AuthConfiguration.swift */,
 				25539009297FD95A0033FB9A /* Date + Extension.swift */,
 				253E0D202986CB3E002C1C43 /* Gradient + Extension.swift */,
 			);
@@ -359,7 +359,7 @@
 				2553F05D2976D69700A1441E /* URLSession + Extension.swift in Sources */,
 				2553F05929758D6300A1441E /* ProfileImageService.swift in Sources */,
 				25E26BC2292CFE3900816889 /* SceneDelegate.swift in Sources */,
-				25149F94295DC0E600713582 /* Constants.swift in Sources */,
+				25149F94295DC0E600713582 /* AuthConfiguration.swift in Sources */,
 				2553900A297FD95A0033FB9A /* Date + Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

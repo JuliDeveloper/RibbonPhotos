@@ -16,14 +16,15 @@ public protocol WebViewPresenterProtocol {
 
 class WebViewPresenter: WebViewPresenterProtocol {
     weak var view: WebViewViewControllerProtocol?
+    private let authConfiguration = AuthConfiguration.standart
     
     func viewDidLoad() {
-        guard var urlComponents = URLComponents(string: Constants.unsplashAuthorizeURLString) else { return }
+        guard var urlComponents = URLComponents(string: authConfiguration.unsplashAuthorizeURLString) else { return }
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: Constants.accessKey),
-            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
+            URLQueryItem(name: "client_id", value: authConfiguration.accessKey),
+            URLQueryItem(name: "redirect_uri", value: authConfiguration.redirectURI),
             URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: Constants.accessScope)
+            URLQueryItem(name: "scope", value: authConfiguration.accessScope)
         ]
         
         guard let url = urlComponents.url else { return }
