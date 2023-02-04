@@ -16,23 +16,17 @@ public protocol WebViewPresenterProtocol {
 
 class WebViewPresenter: WebViewPresenterProtocol {
     weak var view: WebViewViewControllerProtocol?
+    var helper: AuthHelperProtocol
     private let authConfiguration = AuthConfiguration.standart
     
+    init(helper: AuthHelperProtocol) {
+        self.helper = helper
+    }
+    
     func viewDidLoad() {
-        guard var urlComponents = URLComponents(string: authConfiguration.unsplashAuthorizeURLString) else { return }
-        urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: authConfiguration.accessKey),
-            URLQueryItem(name: "redirect_uri", value: authConfiguration.redirectURI),
-            URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: authConfiguration.accessScope)
-        ]
-        
-        guard let url = urlComponents.url else { return }
-        let request = URLRequest(url: url)
-        
-        didUpdateProgressValue(0)
-        
+        let request = helper.authRequest()
         view?.load(request: request)
+        didUpdateProgressValue(0)
     }
     
     func didUpdateProgressValue(_ newValue: Double) {
@@ -48,15 +42,6 @@ class WebViewPresenter: WebViewPresenterProtocol {
     }
     
     func code(from url: URL) -> String? {
-        if
-            let urlComponents = URLComponents(string: url.absoluteString),
-            urlComponents.path == "/oauth/authorize/native",
-            let items = urlComponents.queryItems,
-            let codeItem = items.first(where: { $0.name == "code" })
-        {
-            return codeItem.value
-        } else {
-            return nil
-        }
+        helper.code(from: url)
     }
 }
