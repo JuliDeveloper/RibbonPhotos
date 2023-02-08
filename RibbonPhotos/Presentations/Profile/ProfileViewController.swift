@@ -8,7 +8,12 @@
 import UIKit
 import Kingfisher
 
-final class ProfileViewController: UIViewController {
+protocol ProfileViewControllerProtocol: AnyObject {
+    var presenter: ProfileViewPresenterProtocol? { get set }
+    func logoutFromProfile()
+}
+
+final class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
     
     //MARK: - Properties
     private lazy var profileImageView: UIImageView = {
@@ -40,7 +45,7 @@ final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.config(
             for: label,
-            text: "Hello, world!",
+            text: "",
             fontSize: 13,
             textColor: .ypWhite)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -55,22 +60,16 @@ final class ProfileViewController: UIViewController {
         return button
     }()
     
-    private let profileService = ProfileService.shared
-    private let profileImageService = ProfileImageService.shared
-    private let oAuth2TokenStorage = OAuth2TokenStorage()
-
+    var presenter: ProfileViewPresenterProtocol?
     private var profileImageServiceObserver: NSObjectProtocol?
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = ProfileViewPresenter(viewController: self)
+        
         showGradientAnimation()
-        setupProfileInfo(profileService.profile ?? Profile(
-            username: "",
-            name: "",
-            loginName: "",
-            bio: ""
-        ))
+        setupProfileInfo()
         view.backgroundColor = .ypBlack
         addSubviews()
         setupConstraints()
@@ -138,19 +137,20 @@ final class ProfileViewController: UIViewController {
         }
     }
     
-    private func setupProfileInfo(_ profile: Profile) {
+    func setupProfileInfo() {
+        guard let profile = presenter?.sendProfile() else { return }
+        
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.removeGradientAnimation([self.nameLabel, self.usernameLabel, self.statusLabel])
-            self.nameLabel.text = profile.name
-            self.usernameLabel.text = profile.loginName
-            self.statusLabel.text = profile.bio
+            self.nameLabel.text = profile.name ?? "22222"
+            self.usernameLabel.text = profile.username ?? "22222"
+            self.statusLabel.text = profile.bio ?? "22222"
         }
     }
     
     private func updateAvatar() {
-        if let profileImageURL = profileImageService.avatarURL,
-           let url = URL(string: profileImageURL) {
+        if let url = presenter?.sendUrlAvatar() {
 
             let cache = ImageCache.default
             cache.clearMemoryCache()
@@ -171,9 +171,9 @@ final class ProfileViewController: UIViewController {
         }
     }
     
-    private func logoutFromProfile() {
-        oAuth2TokenStorage.bearerToken = nil
-        WebViewViewController.clean()
+    func logoutFromProfile() {
+        presenter?.logout()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         guard let authViewController = storyboard.instantiateViewController(
             withIdentifier: "AuthViewController"

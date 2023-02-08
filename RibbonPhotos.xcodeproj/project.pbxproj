@@ -31,6 +31,8 @@
 		256D47932938BBC0005BCDF8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D47922938BBC0005BCDF8 /* ProfileViewController.swift */; };
 		256D47952938CB72005BCDF8 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D47942938CB72005BCDF8 /* SingleImageViewController.swift */; };
 		257A83DB2948797A007EA8E8 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257A83DA2948797A007EA8E8 /* UILabel + Extensions.swift */; };
+		257D9BC62993C35700087A9F /* ProfileViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257D9BC52993C35700087A9F /* ProfileViewTest.swift */; };
+		257D9BC82993C51100087A9F /* ProfileViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257D9BC72993C51100087A9F /* ProfileViewPresenter.swift */; };
 		25B98C5E296AE2E300F17C0B /* OAuthTokenResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B98C5D296AE2E300F17C0B /* OAuthTokenResponseBody.swift */; };
 		25B98C60296AE38800F17C0B /* OAuth2Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B98C5F296AE38800F17C0B /* OAuth2Service.swift */; };
 		25B98C62296AFAD000F17C0B /* OAuth2TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B98C61296AFAD000F17C0B /* OAuth2TokenStorage.swift */; };
@@ -82,6 +84,8 @@
 		256D47922938BBC0005BCDF8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		256D47942938CB72005BCDF8 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		257A83DA2948797A007EA8E8 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
+		257D9BC52993C35700087A9F /* ProfileViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTest.swift; sourceTree = "<group>"; };
+		257D9BC72993C51100087A9F /* ProfileViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewPresenter.swift; sourceTree = "<group>"; };
 		25B98C5D296AE2E300F17C0B /* OAuthTokenResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenResponseBody.swift; sourceTree = "<group>"; };
 		25B98C5F296AE38800F17C0B /* OAuth2Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2Service.swift; sourceTree = "<group>"; };
 		25B98C61296AFAD000F17C0B /* OAuth2TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2TokenStorage.swift; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				253F88062993AC8E00750194 /* WebViewTests.swift */,
+				257D9BC52993C35700087A9F /* ProfileViewTest.swift */,
 			);
 			path = RibbonPhotosTests;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				256D47922938BBC0005BCDF8 /* ProfileViewController.swift */,
+				257D9BC72993C51100087A9F /* ProfileViewPresenter.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -386,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				257D9BC62993C35700087A9F /* ProfileViewTest.swift in Sources */,
 				253F88072993AC8E00750194 /* WebViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +426,7 @@
 				25E26BD4292D285D00816889 /* ImagesListCell.swift in Sources */,
 				25E26BC0292CFE3900816889 /* AppDelegate.swift in Sources */,
 				257A83DB2948797A007EA8E8 /* UILabel + Extensions.swift in Sources */,
+				257D9BC82993C51100087A9F /* ProfileViewPresenter.swift in Sources */,
 				2553F05D2976D69700A1441E /* URLSession + Extension.swift in Sources */,
 				2553F05929758D6300A1441E /* ProfileImageService.swift in Sources */,
 				25E26BC2292CFE3900816889 /* SceneDelegate.swift in Sources */,
