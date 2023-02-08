@@ -256,7 +256,7 @@
         <!--Web View View Controller-->
         <scene sceneID="B5a-BG-TU8">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="d7Q-sg-jFr" customClass="WebViewViewController" customModule="RibbonPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewViewController" modalPresentationStyle="fullScreen" id="d7Q-sg-jFr" customClass="WebViewViewController" customModule="RibbonPhotos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eWu-Fm-ccT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
