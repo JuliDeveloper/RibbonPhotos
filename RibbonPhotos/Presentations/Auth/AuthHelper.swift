@@ -12,13 +12,16 @@ protocol AuthHelperProtocol {
     func code(from url: URL) -> String?
 }
 
-class AuthHelper: AuthHelperProtocol {
+final class AuthHelper: AuthHelperProtocol {
+    //MARK: - Properties
     let authConfiguration: AuthConfiguration
     
+    //MARK: - LifeCycle
     init(authConfiguration: AuthConfiguration = .standard) {
         self.authConfiguration = authConfiguration
     }
     
+    //MARK: - Functions
     func authRequest() -> URLRequest {
         let url = authURL()
         return URLRequest(url: url)

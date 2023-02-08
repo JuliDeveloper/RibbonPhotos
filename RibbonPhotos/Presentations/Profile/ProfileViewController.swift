@@ -14,7 +14,6 @@ protocol ProfileViewControllerProtocol: AnyObject {
 }
 
 final class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
-    
     //MARK: - Properties
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()

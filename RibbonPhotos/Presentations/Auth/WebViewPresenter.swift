@@ -14,15 +14,18 @@ public protocol WebViewPresenterProtocol {
     func code(from url: URL) -> String?
 }
 
-class WebViewPresenter: WebViewPresenterProtocol {
+final class WebViewPresenter: WebViewPresenterProtocol {
+    //MARK: - Properties
     weak var view: WebViewViewControllerProtocol?
     var helper: AuthHelperProtocol
     private let authConfiguration = AuthConfiguration.standard
     
+    //MARK: - LifeCycle
     init(helper: AuthHelperProtocol) {
         self.helper = helper
     }
     
+    //MARK: - Functions
     func viewDidLoad() {
         let request = helper.authRequest()
         view?.load(request: request)

@@ -15,18 +15,21 @@ protocol ProfileViewPresenterProtocol {
 }
 
 final class ProfileViewPresenter: ProfileViewPresenterProtocol {
+    //MARK: - Properties
     private let profileService: ProfileService?
     private let profileImageService: ProfileImageService?
     private let oAuth2TokenStorage: OAuth2TokenStorage?
     
     weak var view: ProfileViewControllerProtocol?
     
+    //MARK: - LifeCycle
     init(viewController: ProfileViewControllerProtocol) {
         profileService = ProfileService.shared
         profileImageService = ProfileImageService.shared
         oAuth2TokenStorage = OAuth2TokenStorage()
     }
     
+    //MARK: - Functions
     func sendProfile() -> Profile? {
         let profile = profileService?.profile
         return profile
