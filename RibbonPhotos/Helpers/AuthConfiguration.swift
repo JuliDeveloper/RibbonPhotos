@@ -56,7 +56,7 @@ struct AuthConfiguration {
         self.unsplashGetListPhotos = unsplashGetListPhotos
     }
     
-    static var standart: AuthConfiguration {
+    static var standard: AuthConfiguration {
         return AuthConfiguration(
             accessKey: baseAccessKey,
             secretKey: baseSecretKey,

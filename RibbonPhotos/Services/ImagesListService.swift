@@ -18,7 +18,7 @@ final class ImagesListService {
     private var task: URLSessionTask?
     
     private let token = OAuth2TokenStorage().bearerToken
-    private let authConfiguration = AuthConfiguration.standart
+    private let authConfiguration = AuthConfiguration.standard
     
     func fetchPhotosNextPage() {
         if task != nil { return }

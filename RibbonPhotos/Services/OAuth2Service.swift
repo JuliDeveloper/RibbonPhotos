@@ -22,7 +22,7 @@ final class OAuth2Service: OAuth2ServiceProtocol {
     private var task: URLSessionTask?
     private var lastCode: String?
     
-    private let authConfiguration = AuthConfiguration.standart
+    private let authConfiguration = AuthConfiguration.standard
     
     private func makeRequest(code: String) -> URLRequest {
         guard var urlComponents = URLComponents(string: authConfiguration.unsplashAuthorizeTokenURLString) else { return URLRequest(url: URL(fileURLWithPath: "")) }

@@ -18,7 +18,7 @@ final class ProfileService: ProfileServiceProtocol {
     private var task: URLSessionTask?
     
     private(set) var profile: Profile?
-    private let authConfiguration = AuthConfiguration.standart
+    private let authConfiguration = AuthConfiguration.standard
     
     private func convertFrom(profileResult: ProfileResult) -> Profile {
         let username = "\(profileResult.username ?? "")"

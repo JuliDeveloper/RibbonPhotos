@@ -17,7 +17,7 @@ final class ProfileImageService {
     
     private(set) var avatarURL: String?
     
-    private let authConfiguration = AuthConfiguration.standart
+    private let authConfiguration = AuthConfiguration.standard
     
     private func makeRequest(_ token: String, username: String) -> URLRequest {
         guard let url = URL(string: authConfiguration.unsplashGetProfileImage + username) else { return URLRequest(url: URL(fileURLWithPath: "")) }
