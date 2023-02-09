@@ -34,6 +34,7 @@
 		257D9BC62993C35700087A9F /* ProfileViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257D9BC52993C35700087A9F /* ProfileViewTest.swift */; };
 		257D9BC82993C51100087A9F /* ProfileViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257D9BC72993C51100087A9F /* ProfileViewPresenter.swift */; };
 		257D9BCA29953A0600087A9F /* ImageListViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257D9BC929953A0600087A9F /* ImageListViewPresenter.swift */; };
+		257D9BCC299540EE00087A9F /* ImageListViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257D9BCB299540EE00087A9F /* ImageListViewTest.swift */; };
 		25B98C5E296AE2E300F17C0B /* OAuthTokenResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B98C5D296AE2E300F17C0B /* OAuthTokenResponseBody.swift */; };
 		25B98C60296AE38800F17C0B /* OAuth2Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B98C5F296AE38800F17C0B /* OAuth2Service.swift */; };
 		25B98C62296AFAD000F17C0B /* OAuth2TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B98C61296AFAD000F17C0B /* OAuth2TokenStorage.swift */; };
@@ -88,6 +89,7 @@
 		257D9BC52993C35700087A9F /* ProfileViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTest.swift; sourceTree = "<group>"; };
 		257D9BC72993C51100087A9F /* ProfileViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewPresenter.swift; sourceTree = "<group>"; };
 		257D9BC929953A0600087A9F /* ImageListViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewPresenter.swift; sourceTree = "<group>"; };
+		257D9BCB299540EE00087A9F /* ImageListViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewTest.swift; sourceTree = "<group>"; };
 		25B98C5D296AE2E300F17C0B /* OAuthTokenResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenResponseBody.swift; sourceTree = "<group>"; };
 		25B98C5F296AE38800F17C0B /* OAuth2Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2Service.swift; sourceTree = "<group>"; };
 		25B98C61296AFAD000F17C0B /* OAuth2TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2TokenStorage.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			children = (
 				253F88062993AC8E00750194 /* WebViewTests.swift */,
 				257D9BC52993C35700087A9F /* ProfileViewTest.swift */,
+				257D9BCB299540EE00087A9F /* ImageListViewTest.swift */,
 			);
 			path = RibbonPhotosTests;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 			files = (
 				257D9BC62993C35700087A9F /* ProfileViewTest.swift in Sources */,
 				253F88072993AC8E00750194 /* WebViewTests.swift in Sources */,
+				257D9BCC299540EE00087A9F /* ImageListViewTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
