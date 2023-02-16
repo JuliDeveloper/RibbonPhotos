@@ -17,7 +17,7 @@ public protocol WebViewPresenterProtocol {
 final class WebViewPresenter: WebViewPresenterProtocol {
     //MARK: - Properties
     weak var view: WebViewViewControllerProtocol?
-    var helper: AuthHelperProtocol
+    private var helper: AuthHelperProtocol
     private let authConfiguration = AuthConfiguration.standard
     
     //MARK: - LifeCycle

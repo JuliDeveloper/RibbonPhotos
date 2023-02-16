@@ -67,6 +67,8 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
         super.viewDidLoad()
         presenter = ProfileViewPresenter(viewController: self)
         
+        logoutButton.accessibilityIdentifier = "logoutButton"
+        
         showGradientAnimation()
         setupProfileInfo()
         view.backgroundColor = .ypBlack
@@ -142,9 +144,9 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.removeGradientAnimation([self.nameLabel, self.usernameLabel, self.statusLabel])
-            self.nameLabel.text = profile.name ?? "22222"
-            self.usernameLabel.text = profile.username ?? "22222"
-            self.statusLabel.text = profile.bio ?? "22222"
+            self.nameLabel.text = profile.name ?? ""
+            self.usernameLabel.text = "@" + (profile.username ?? "")
+            self.statusLabel.text = profile.bio ?? ""
         }
     }
     

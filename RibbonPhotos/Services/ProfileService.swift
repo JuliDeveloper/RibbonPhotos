@@ -23,7 +23,7 @@ final class ProfileService: ProfileServiceProtocol {
     private func convertFrom(profileResult: ProfileResult) -> Profile {
         let username = "\(profileResult.username ?? "")"
         let name = "\(profileResult.firstName ?? "") \(profileResult.lastName ?? "")"
-        let loginName = "@\(profileResult.username ?? "")"
+        let loginName = "\(profileResult.username ?? "")"
         let bio = "\(profileResult.bio ?? "")"
         
         return Profile(username: username, name: name, loginName: loginName, bio: bio)
