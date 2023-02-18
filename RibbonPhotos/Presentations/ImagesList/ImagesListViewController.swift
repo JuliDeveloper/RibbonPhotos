@@ -8,9 +8,7 @@
 import UIKit
 import Kingfisher
 
-protocol ImagesListViewControllerProtocol: AnyObject {
-    var presenter: ImageListViewPresenterProtocol? { get set }
-}
+protocol ImagesListViewControllerProtocol: AnyObject {}
 
 final class ImagesListViewController: UIViewController, ImagesListViewControllerProtocol {
     //MARK: - Properties
@@ -22,13 +20,13 @@ final class ImagesListViewController: UIViewController, ImagesListViewController
     
     private var imageListServiceObserver: NSObjectProtocol?
     
-    var presenter: ImageListViewPresenterProtocol?
+    lazy var presenter: ImageListViewPresenterProtocol = {
+        ImageListViewPresenter(viewController: self)
+    }()
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = ImageListViewPresenter(viewController: self)
-        
         photosName = Array(0..<20).map({ "\($0)" })
         
         tableView.dataSource = self
@@ -43,7 +41,7 @@ final class ImagesListViewController: UIViewController, ImagesListViewController
                         guard let self = self else { return }
                         self.updateTableViewAnimated()
                     }
-        presenter?.sendPhotosNextPage()
+        presenter.sendPhotosNextPage()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -61,9 +59,9 @@ final class ImagesListViewController: UIViewController, ImagesListViewController
     
     private func updateTableViewAnimated() {
         let currentCount = photos.count
-        let newCount = presenter?.sendArrayPhotos().count ?? 0
+        let newCount = presenter.getPhotos().count
         
-        photos = presenter?.sendArrayPhotos() ?? []
+        photos = presenter.getPhotos()
         
         if currentCount != newCount {
             tableView.performBatchUpdates {
@@ -98,7 +96,7 @@ extension ImagesListViewController: UITableViewDataSource {
 extension ImagesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row + 1 == photos.count {
-            presenter?.sendPhotosNextPage()
+            presenter.sendPhotosNextPage()
         }
     }
     
@@ -112,12 +110,12 @@ extension ImagesListViewController: ImagesListCellDelegate {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let photo = photos[indexPath.row]
         UIBlockingProgressHUD.show()
-        presenter?.sendChangedLike(photo: photo, completion: { [weak self] result in
+        presenter.sendChangedLike(photo: photo, completion: { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {
                 case .success(_):
-                    self.photos = self.presenter?.sendArrayPhotos() ?? []
+                    self.photos = self.presenter.getPhotos()
                     cell.setIsLiked(self.photos[indexPath.row].isLiked)
                 case .failure(let error):
                     print(error)

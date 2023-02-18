@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AuthHelperProtocol {
-    func authRequest() -> URLRequest
+    func authRequest() -> URLRequest?
     func code(from url: URL) -> String?
 }
 
@@ -22,22 +22,27 @@ final class AuthHelper: AuthHelperProtocol {
     }
     
     //MARK: - Functions
-    func authRequest() -> URLRequest {
-        let url = authURL()
+    func authRequest() -> URLRequest? {
+        guard let url = authURL() else { return nil }
         return URLRequest(url: url)
     }
     
-    func authURL() -> URL {
-        guard var urlComponents = URLComponents(string: authConfiguration.unsplashAuthorizeURLString) else { return URL(fileURLWithPath: "") }
-        urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: authConfiguration.accessKey),
-            URLQueryItem(name: "redirect_uri", value: authConfiguration.redirectURI),
-            URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: authConfiguration.accessScope)
-        ]
+    func authURL() -> URL? {
+        if var urlComponents = URLComponents(
+            string: authConfiguration.unsplashAuthorizeURLString
+        ) {
+            urlComponents.queryItems = [
+                URLQueryItem(name: "client_id", value: authConfiguration.accessKey),
+                URLQueryItem(name: "redirect_uri", value: authConfiguration.redirectURI),
+                URLQueryItem(name: "response_type", value: "code"),
+                URLQueryItem(name: "scope", value: authConfiguration.accessScope)
+            ]
+            guard let url = urlComponents.url else { return nil }
+            return url
+        } else {
+            return nil
+        }
         
-        guard let url = urlComponents.url else { return URL(fileURLWithPath: "") }
-        return url
     }
     
     func code(from url: URL) -> String? {

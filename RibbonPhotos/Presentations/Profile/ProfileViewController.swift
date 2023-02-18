@@ -9,7 +9,6 @@ import UIKit
 import Kingfisher
 
 protocol ProfileViewControllerProtocol: AnyObject {
-    var presenter: ProfileViewPresenterProtocol? { get set }
     func logoutFromProfile()
 }
 
@@ -59,14 +58,14 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
         return button
     }()
     
-    var presenter: ProfileViewPresenterProtocol?
+    lazy var presenter: ProfileViewPresenterProtocol = {
+        ProfileViewPresenter(viewController: self)
+    }()
     private var profileImageServiceObserver: NSObjectProtocol?
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = ProfileViewPresenter(viewController: self)
-        
         logoutButton.accessibilityIdentifier = "logoutButton"
         
         showGradientAnimation()
@@ -139,7 +138,7 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
     }
     
     func setupProfileInfo() {
-        guard let profile = presenter?.sendProfile() else { return }
+        guard let profile = presenter.sendProfile() else { return }
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -151,7 +150,7 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
     }
     
     private func updateAvatar() {
-        if let url = presenter?.sendUrlAvatar() {
+        if let url = presenter.sendUrlAvatar() {
 
             let cache = ImageCache.default
             cache.clearMemoryCache()
@@ -173,7 +172,7 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
     }
     
     func logoutFromProfile() {
-        presenter?.logout()
+        presenter.logout()
         
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         guard let authViewController = storyboard.instantiateViewController(

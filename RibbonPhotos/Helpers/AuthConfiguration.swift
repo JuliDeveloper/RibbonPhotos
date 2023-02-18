@@ -32,30 +32,6 @@ struct AuthConfiguration {
     let unsplashGetProfileImage: String
     let unsplashGetListPhotos: String
     
-    init(
-        accessKey: String,
-        secretKey: String,
-        redirectURI: String,
-        accessScope: String,
-        defaultBaseURL: URL,
-        unsplashAuthorizeURLString: String,
-        unsplashAuthorizeTokenURLString: String,
-        unsplashGetProfile: String,
-        unsplashGetProfileImage: String,
-        unsplashGetListPhotos: String
-    ) {
-        self.accessKey = accessKey
-        self.secretKey = secretKey
-        self.redirectURI = redirectURI
-        self.accessScope = accessScope
-        self.defaultBaseURL = defaultBaseURL
-        self.unsplashAuthorizeURLString = unsplashAuthorizeURLString
-        self.unsplashAuthorizeTokenURLString = unsplashAuthorizeTokenURLString
-        self.unsplashGetProfile = unsplashGetProfile
-        self.unsplashGetProfileImage = unsplashGetProfileImage
-        self.unsplashGetListPhotos = unsplashGetListPhotos
-    }
-    
     static var standard: AuthConfiguration {
         return AuthConfiguration(
             accessKey: baseAccessKey,

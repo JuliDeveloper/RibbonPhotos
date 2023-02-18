@@ -13,7 +13,7 @@ final class ImageListViewPresenterSpy: ImageListViewPresenterProtocol {
     var changeLikeCalled = false
     var view: ImagesListViewControllerProtocol?
     
-    func sendArrayPhotos() -> [Photo] {
+    func getPhotos() -> [Photo] {
         return [Photo]()
     }
     
@@ -36,7 +36,7 @@ final class ImageListViewTest: XCTestCase {
         viewController.presenter = presenter
         presenter.view = viewController
         
-        let photos = presenter.sendArrayPhotos()
+        let photos = presenter.getPhotos()
         
         XCTAssertNotNil(photos)
     }

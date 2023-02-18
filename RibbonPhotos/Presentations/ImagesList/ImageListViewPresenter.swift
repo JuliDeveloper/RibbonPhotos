@@ -8,32 +8,31 @@
 import Foundation
 
 protocol ImageListViewPresenterProtocol {
-    var view: ImagesListViewControllerProtocol? { get set }
-    func sendArrayPhotos() -> [Photo]
+    func getPhotos() -> [Photo]
     func sendPhotosNextPage()
     func sendChangedLike(photo: Photo, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class ImageListViewPresenter: ImageListViewPresenterProtocol {
     //MARK: - Properties
-    private let imageListService: ImagesListService?
+    private let imageListService: ImagesListService
     weak var view: ImagesListViewControllerProtocol?
     
     //MARK: - LifeCycle
-    init(viewController: ImagesListViewControllerProtocol) {
-        self.imageListService = ImagesListService.shared
+    init(viewController: ImagesListViewControllerProtocol, imageListService: ImagesListService = .shared) {
+        self.imageListService = imageListService
     }
     
     //MARK: - Functions
-    func sendArrayPhotos() -> [Photo] {
-        imageListService?.photos ?? []
+    func getPhotos() -> [Photo] {
+        imageListService.photos 
     }
     
     func sendPhotosNextPage() {
-        imageListService?.fetchPhotosNextPage()
+        imageListService.fetchPhotosNextPage()
     }
     
     func sendChangedLike(photo: Photo, completion: @escaping (Result<Void, Error>) -> Void) {
-        imageListService?.changeLike(photoId: photo.id, isLike: photo.isLiked, completion)
+        imageListService.changeLike(photoId: photo.id, isLike: photo.isLiked, completion)
     }
 }
