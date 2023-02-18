@@ -8,8 +8,8 @@
 import Foundation
 
 protocol ProfileViewPresenterProtocol {
-    func sendProfile() -> Profile?
-    func sendUrlAvatar() -> URL?
+    func getProfile() -> Profile?
+    func getUrlAvatar() -> URL?
     func logout()
 }
 
@@ -34,12 +34,12 @@ final class ProfileViewPresenter: ProfileViewPresenterProtocol {
     }
     
     //MARK: - Functions
-    func sendProfile() -> Profile? {
+    func getProfile() -> Profile? {
         let profile = profileService.profile
         return profile
     }
     
-    func sendUrlAvatar() -> URL? {
+    func getUrlAvatar() -> URL? {
         let imageUrl = profileImageService.avatarURL ?? ""
         let url = URL(string: imageUrl)
         return url

@@ -8,9 +8,7 @@
 import UIKit
 import Kingfisher
 
-protocol ProfileViewControllerProtocol: AnyObject {
-    func logoutFromProfile()
-}
+protocol ProfileViewControllerProtocol: AnyObject {}
 
 final class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
     //MARK: - Properties
@@ -137,8 +135,8 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
         }
     }
     
-    func setupProfileInfo() {
-        guard let profile = presenter.sendProfile() else { return }
+    private func setupProfileInfo() {
+        guard let profile = presenter.getProfile() else { return }
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -150,7 +148,7 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
     }
     
     private func updateAvatar() {
-        if let url = presenter.sendUrlAvatar() {
+        if let url = presenter.getUrlAvatar() {
 
             let cache = ImageCache.default
             cache.clearMemoryCache()
@@ -171,7 +169,7 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
         }
     }
     
-    func logoutFromProfile() {
+    private func logoutFromProfile() {
         presenter.logout()
         
         let storyboard = UIStoryboard(name: "Main", bundle: .main)

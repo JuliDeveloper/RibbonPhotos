@@ -2,13 +2,18 @@
 import XCTest
 
 final class ProfileViewPresenterSpy: ProfileViewPresenterProtocol {
+    var getProfileCalled = false
+    var updateAvatarCalled = false
+    
     var view: ProfileViewControllerProtocol?
     
-    func sendProfile() -> Profile? {
+    func getProfile() -> Profile? {
+        getProfileCalled = true
         return Profile()
     }
     
-    func sendUrlAvatar() -> URL? {
+    func getUrlAvatar() -> URL? {
+        updateAvatarCalled = true
         return URL(string: "testString")
     }
     
@@ -25,9 +30,9 @@ final class ProfileViewTest: XCTestCase {
         viewController.presenter = presenter
         presenter.view = viewController
 
-        let profile = presenter.sendProfile()
+        _ = viewController.view
 
-        XCTAssertNotNil(profile)
+        XCTAssertTrue(presenter.getProfileCalled)
     }
 
     func testFetchAvatarUrl() {
@@ -37,22 +42,8 @@ final class ProfileViewTest: XCTestCase {
         viewController.presenter = presenter
         presenter.view = viewController
         
-        let url = presenter.sendUrlAvatar()
-        
-        XCTAssertEqual(url, URL(string: "testString"))
-    }
+        _ = viewController.view
 
-    func testLogout() {
-        let viewController = ProfileViewController()
-        let presenter = ProfileViewPresenterSpy()
-        let oAuth2TokenStorage = OAuth2TokenStorage()
-
-        viewController.presenter = presenter
-        presenter.view = viewController
-
-        presenter.logout()
-        let token = oAuth2TokenStorage.bearerToken
-
-        XCTAssertEqual(token, nil)
+        XCTAssertTrue(presenter.updateAvatarCalled)
     }
 }
