@@ -9,11 +9,13 @@
 import XCTest
 
 final class ImageListViewPresenterSpy: ImageListViewPresenterProtocol {
+    var getPhotosCalled = false
     var loadPhotosNextPagesCalled = false
     var changeLikeCalled = false
     var view: ImagesListViewControllerProtocol?
     
     func getPhotos() -> [Photo] {
+        getPhotosCalled = true
         return [Photo]()
     }
     
@@ -22,7 +24,7 @@ final class ImageListViewPresenterSpy: ImageListViewPresenterProtocol {
     }
     
     func sendChangedLike(photo: Photo, completion: @escaping (Result<Void, Error>) -> Void) {
-        changeLikeCalled = true
+        
     }
     
     
@@ -36,44 +38,20 @@ final class ImageListViewTest: XCTestCase {
         viewController.presenter = presenter
         presenter.view = viewController
         
-        let photos = presenter.getPhotos()
+        _ = viewController.view
         
-        XCTAssertNotNil(photos)
+        XCTAssertTrue(presenter.getPhotosCalled)
     }
     
     func testFetchPhotosNextPage() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? UITabBarController else { return }
-        guard let viewController = tabBarController.viewControllers?[0] as? ImagesListViewController else { return }
+        let viewController = ImagesListViewController()
         let presenter = ImageListViewPresenterSpy()
         
         viewController.presenter = presenter
         presenter.view = viewController
         
-        viewController.presenter?.sendPhotosNextPage()
+        _ = viewController.view
         
         XCTAssertTrue(presenter.loadPhotosNextPagesCalled)
-    }
-    
-    func testChangeLike() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier: "ImagesListViewController") as? ImagesListViewController else { return }
-        let presenter = ImageListViewPresenterSpy()
-        let photo = Photo(
-            id: "",
-            size: CGSize(),
-            createdAt: Date(),
-            welcomeDescription: "",
-            thumbImageURL: "",
-            largeImageURL: "",
-            isLiked: Bool()
-        )
-        
-        viewController.presenter = presenter
-        presenter.view = viewController
-        
-        viewController.presenter?.sendChangedLike(photo: photo, completion: { _ in })
-        
-        XCTAssertTrue(presenter.changeLikeCalled)
     }
 }

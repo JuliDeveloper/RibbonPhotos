@@ -29,8 +29,8 @@ final class ImagesListViewController: UIViewController, ImagesListViewController
         super.viewDidLoad()
         photosName = Array(0..<20).map({ "\($0)" })
         
-        tableView.dataSource = self
-        tableView.delegate = self
+        tableView?.dataSource = self
+        tableView?.delegate = self
         
         imageListServiceObserver = NotificationCenter.default
                     .addObserver(
@@ -41,6 +41,7 @@ final class ImagesListViewController: UIViewController, ImagesListViewController
                         guard let self = self else { return }
                         self.updateTableViewAnimated()
                     }
+        updateTableViewAnimated()
         presenter.sendPhotosNextPage()
     }
 
@@ -107,7 +108,7 @@ extension ImagesListViewController: UITableViewDelegate {
 
 extension ImagesListViewController: ImagesListCellDelegate {
     func imageListCellDidTapLike(_ cell: ImagesListCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        guard let indexPath = tableView?.indexPath(for: cell) else { return }
         let photo = photos[indexPath.row]
         UIBlockingProgressHUD.show()
         presenter.sendChangedLike(photo: photo, completion: { [weak self] result in

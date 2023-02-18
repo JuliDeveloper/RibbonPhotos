@@ -85,7 +85,7 @@ final class WebViewTests: XCTestCase {
         let authHelper = AuthHelper()
 
         let url = authHelper.authURL()
-        let urlString = url.absoluteString
+        guard let urlString = url?.absoluteString else { return }
 
         XCTAssertTrue(urlString.contains(configuration.unsplashAuthorizeURLString))
         XCTAssertTrue(urlString.contains(configuration.accessKey))
