@@ -18,6 +18,7 @@ final class ProfileViewPresenter: ProfileViewPresenterProtocol {
     private let profileService: ProfileService
     private let profileImageService: ProfileImageService
     private let oAuth2TokenStorage: OAuth2TokenStorage
+    private let helper: WebViewHelperProtocol
     
     weak var view: ProfileViewControllerProtocol?
     
@@ -26,11 +27,13 @@ final class ProfileViewPresenter: ProfileViewPresenterProtocol {
         viewController: ProfileViewControllerProtocol,
         profileService: ProfileService = .shared,
         profileImageService: ProfileImageService = .shared,
-        oAuth2TokenStorage: OAuth2TokenStorage = OAuth2TokenStorage()
+        oAuth2TokenStorage: OAuth2TokenStorage = OAuth2TokenStorage(),
+        helper: WebViewHelperProtocol = WebViewHelper()
     ) {
         self.profileService = profileService
         self.profileImageService = profileImageService
         self.oAuth2TokenStorage = oAuth2TokenStorage
+        self.helper = helper
     }
     
     //MARK: - Functions
@@ -47,6 +50,6 @@ final class ProfileViewPresenter: ProfileViewPresenterProtocol {
     
     func logout() {
         oAuth2TokenStorage.bearerToken = nil
-        WebViewViewController.clean()
+        helper.cleanCookies()
     }
 }
