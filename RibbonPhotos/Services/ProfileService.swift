@@ -18,18 +18,19 @@ final class ProfileService: ProfileServiceProtocol {
     private var task: URLSessionTask?
     
     private(set) var profile: Profile?
+    private let authConfiguration = AuthConfiguration.standard
     
     private func convertFrom(profileResult: ProfileResult) -> Profile {
         let username = "\(profileResult.username ?? "")"
         let name = "\(profileResult.firstName ?? "") \(profileResult.lastName ?? "")"
-        let loginName = "@\(profileResult.username ?? "")"
+        let loginName = "\(profileResult.username ?? "")"
         let bio = "\(profileResult.bio ?? "")"
         
         return Profile(username: username, name: name, loginName: loginName, bio: bio)
     }
     
     private func makeRequest(_ token: String) -> URLRequest {
-        guard let url = URL(string: Constants.unsplashGetProfile) else { return URLRequest(url: URL(fileURLWithPath: "")) }
+        guard let url = URL(string: authConfiguration.unsplashGetProfile) else { return URLRequest(url: URL(fileURLWithPath: "")) }
         var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
